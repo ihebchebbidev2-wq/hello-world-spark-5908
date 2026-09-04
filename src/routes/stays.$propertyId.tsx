@@ -33,7 +33,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { LanguageSelector } from "@/components/layout/LanguageSelector";
-import { properties } from "@/data/properties";
+import { cityName, properties } from "@/data/properties";
 import { interpolate, useLanguage } from "@/i18n/LanguageProvider";
 import { useFavorites } from "@/hooks/useFavorites";
 import { cn } from "@/lib/utils";
@@ -88,7 +88,7 @@ function ListingDetail() {
   const total = nights * property.price;
   const favorite = isFavorite(property.id);
   const propertyName = property.name;
-  const imageAlt = `${property.name}, ${property.location[locale]}`;
+  const imageAlt = `${property.name}, ${cityName(property, locale)}`;
   const amenities: ReadonlyArray<readonly [LucideIcon, string]> = [
     [Wifi, t.detail.wifi], [Car, t.detail.parking], [ChefHat, t.detail.kitchen],
     [Laptop, t.detail.workspace], [Snowflake, t.detail.air], [ShieldCheck, t.detail.security],
@@ -173,7 +173,7 @@ function ListingDetail() {
                 <div className="min-w-0">
                   <span className="inline-flex rounded-md bg-secondary px-2 py-1 text-[11px] font-bold text-primary">{t.detail.guestFavorite}</span>
                   <h1 className="mt-3 text-2xl leading-tight font-semibold sm:text-4xl">{property.name}</h1>
-                  <p className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground"><MapPin className="size-4 shrink-0" aria-hidden />{property.location[locale]}</p>
+                  <p className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground"><MapPin className="size-4 shrink-0" aria-hidden />{cityName(property, locale)}</p>
                 </div>
                 <div className="text-right">
                   <p className="flex items-center justify-end gap-1 font-semibold"><Star className="size-4 fill-primary text-primary" aria-hidden />{property.rating.toFixed(1)}</p>
@@ -216,7 +216,7 @@ function ListingDetail() {
               <section className="py-7">
                 <h2 className="text-xl font-semibold">{t.detail.locationTitle}</h2>
                 <div className="mt-5 flex min-h-44 items-center justify-center rounded-lg border border-border bg-secondary text-center">
-                  <div><MapPin className="mx-auto size-7 text-primary" /><p className="mt-3 font-semibold">{property.location[locale]}</p><p className="mt-1 text-xs text-muted-foreground">{t.detail.mapNote}</p></div>
+                  <div><MapPin className="mx-auto size-7 text-primary" /><p className="mt-3 font-semibold">{cityName(property, locale)}</p><p className="mt-1 text-xs text-muted-foreground">{t.detail.mapNote}</p></div>
                 </div>
                 <h2 className="mt-8 text-xl font-semibold">{t.detail.houseRules}</h2>
                 <ul className="mt-4 space-y-3 text-sm"><li className="flex gap-3"><Check className="size-5 text-primary" />{t.detail.cancellation}</li><li className="flex gap-3"><Check className="size-5 text-primary" />{t.detail.arrival}</li></ul>

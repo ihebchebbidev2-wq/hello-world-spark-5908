@@ -55,7 +55,7 @@ export function PropertyCard({ property, isFavorite, onToggleFavorite }: Props) 
 
       <div className="relative flex h-full min-h-[20rem] flex-col justify-end p-5 text-white transition-transform duration-300 group-hover:-translate-y-0.5 sm:min-h-[22rem] sm:p-6">
         <h3 className="font-display text-xl leading-snug font-bold tracking-tight">{property.name}</h3>
-        <p className="mt-0.5 text-sm text-white/80">{property.location[locale]}</p>
+        <p className="mt-0.5 text-sm text-white/80">{cityName(property, locale)}</p>
 
 
         <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-[11px] text-white/80">
