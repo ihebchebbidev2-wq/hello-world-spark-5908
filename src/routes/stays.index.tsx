@@ -36,18 +36,19 @@ import { cn } from "@/lib/utils";
 
 type SortOption = "recommended" | "price-low" | "price-high" | "rating";
 type StaySearch = {
-  where: string;
-  from: string;
-  to: string;
-  guests: number;
-  category: "all" | PropertyCategory;
-  maxPrice: number;
-  rating: number;
-  beds: number;
-  sort: SortOption;
+  where?: string;
+  from?: string;
+  to?: string;
+  guests?: number;
+  category?: "all" | PropertyCategory;
+  maxPrice?: number;
+  rating?: number;
+  beds?: number;
+  sort?: SortOption;
 };
+type ResolvedSearch = Required<StaySearch>;
 
-const defaults: StaySearch = {
+const defaults: ResolvedSearch = {
   where: "",
   from: "",
   to: "",
@@ -59,7 +60,7 @@ const defaults: StaySearch = {
   sort: "recommended",
 };
 
-export const Route = createFileRoute("/stays")({
+export const Route = createFileRoute("/stays/")({
   validateSearch: (input: Record<string, unknown>): StaySearch => {
     const raw = input as Partial<Record<keyof StaySearch, unknown>>;
     return {
@@ -93,8 +94,9 @@ export const Route = createFileRoute("/stays")({
 });
 
 function StaysPage() {
-  const search = Route.useSearch();
-  const navigate = useNavigate({ from: "/stays" });
+  const rawSearch = Route.useSearch();
+  const search: ResolvedSearch = { ...defaults, ...rawSearch };
+  const navigate = useNavigate({ from: "/stays/" });
   const { t, locale } = useLanguage();
   const { isFavorite, toggle } = useFavorites();
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);

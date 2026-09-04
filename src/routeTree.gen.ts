@@ -10,7 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as StaysRouteImport } from './routes/stays'
+import { Route as StaysIndexRouteImport } from './routes/stays.index'
 import { Route as StaysPropertyIdRouteImport } from './routes/stays.$propertyId'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,44 +18,45 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const StaysRoute = StaysRouteImport.update({
-  id: '/stays',
-  path: '/stays',
+const StaysIndexRoute = StaysIndexRouteImport.update({
+  id: '/stays/',
+  path: '/stays/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StaysPropertyIdRoute = StaysPropertyIdRouteImport.update({
-  id: '/$propertyId',
-  path: '/$propertyId',
-  getParentRoute: () => StaysRoute,
+  id: '/stays/$propertyId',
+  path: '/stays/$propertyId',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/stays': typeof StaysRouteWithChildren
   '/stays/$propertyId': typeof StaysPropertyIdRoute
+  '/stays/': typeof StaysIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/stays': typeof StaysRouteWithChildren
   '/stays/$propertyId': typeof StaysPropertyIdRoute
+  '/stays': typeof StaysIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/stays': typeof StaysRouteWithChildren
   '/stays/$propertyId': typeof StaysPropertyIdRoute
+  '/stays/': typeof StaysIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/stays' | '/stays/$propertyId'
+  fullPaths: '/' | '/stays/$propertyId' | '/stays/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/stays' | '/stays/$propertyId'
-  id: '__root__' | '/' | '/stays' | '/stays/$propertyId'
+  to: '/' | '/stays/$propertyId' | '/stays'
+  id: '__root__' | '/' | '/stays/$propertyId' | '/stays/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  StaysRoute: typeof StaysRouteWithChildren
+  StaysPropertyIdRoute: typeof StaysPropertyIdRoute
+  StaysIndexRoute: typeof StaysIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -67,36 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/stays': {
-      id: '/stays'
+    '/stays/': {
+      id: '/stays/'
       path: '/stays'
-      fullPath: '/stays'
-      preLoaderRoute: typeof StaysRouteImport
+      fullPath: '/stays/'
+      preLoaderRoute: typeof StaysIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/stays/$propertyId': {
       id: '/stays/$propertyId'
-      path: '/$propertyId'
+      path: '/stays/$propertyId'
       fullPath: '/stays/$propertyId'
       preLoaderRoute: typeof StaysPropertyIdRouteImport
-      parentRoute: typeof StaysRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
 
-interface StaysRouteChildren {
-  StaysPropertyIdRoute: typeof StaysPropertyIdRoute
-}
-
-const StaysRouteChildren: StaysRouteChildren = {
-  StaysPropertyIdRoute: StaysPropertyIdRoute,
-}
-
-const StaysRouteWithChildren = StaysRoute._addFileChildren(StaysRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  StaysRoute: StaysRouteWithChildren,
+  StaysPropertyIdRoute: StaysPropertyIdRoute,
+  StaysIndexRoute: StaysIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
