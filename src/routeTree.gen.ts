@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as FavouritesRouteImport } from './routes/favourites'
 import { Route as MessagesRouteImport } from './routes/messages'
 import { Route as TripsRouteImport } from './routes/trips'
 import { Route as StaysIndexRouteImport } from './routes/stays.index'
@@ -24,6 +25,11 @@ const IndexRoute = IndexRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FavouritesRoute = FavouritesRouteImport.update({
+  id: '/favourites',
+  path: '/favourites',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MessagesRoute = MessagesRouteImport.update({
@@ -50,6 +56,7 @@ const StaysPropertyIdRoute = StaysPropertyIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/favourites': typeof FavouritesRoute
   '/messages': typeof MessagesRoute
   '/trips': typeof TripsRoute
   '/stays/$propertyId': typeof StaysPropertyIdRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/favourites': typeof FavouritesRoute
   '/messages': typeof MessagesRoute
   '/trips': typeof TripsRoute
   '/stays/$propertyId': typeof StaysPropertyIdRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/favourites': typeof FavouritesRoute
   '/messages': typeof MessagesRoute
   '/trips': typeof TripsRoute
   '/stays/$propertyId': typeof StaysPropertyIdRoute
@@ -75,13 +84,27 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/auth' | '/messages' | '/trips' | '/stays/$propertyId' | '/stays/'
+    | '/'
+    | '/auth'
+    | '/favourites'
+    | '/messages'
+    | '/trips'
+    | '/stays/$propertyId'
+    | '/stays/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/messages' | '/trips' | '/stays/$propertyId' | '/stays'
+  to:
+    | '/'
+    | '/auth'
+    | '/favourites'
+    | '/messages'
+    | '/trips'
+    | '/stays/$propertyId'
+    | '/stays'
   id:
     | '__root__'
     | '/'
     | '/auth'
+    | '/favourites'
     | '/messages'
     | '/trips'
     | '/stays/$propertyId'
@@ -91,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  FavouritesRoute: typeof FavouritesRoute
   MessagesRoute: typeof MessagesRoute
   TripsRoute: typeof TripsRoute
   StaysPropertyIdRoute: typeof StaysPropertyIdRoute
@@ -111,6 +135,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/favourites': {
+      id: '/favourites'
+      path: '/favourites'
+      fullPath: '/favourites'
+      preLoaderRoute: typeof FavouritesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/messages': {
@@ -147,6 +178,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  FavouritesRoute: FavouritesRoute,
   MessagesRoute: MessagesRoute,
   TripsRoute: TripsRoute,
   StaysPropertyIdRoute: StaysPropertyIdRoute,
