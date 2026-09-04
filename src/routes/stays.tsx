@@ -60,21 +60,25 @@ const defaults: StaySearch = {
 };
 
 export const Route = createFileRoute("/stays")({
-  validateSearch: (raw: Record<string, unknown>): StaySearch => ({
-    where: typeof raw.where === "string" ? raw.where.slice(0, 80) : "",
-    from: typeof raw.from === "string" ? raw.from : "",
-    to: typeof raw.to === "string" ? raw.to : "",
-    guests: Math.max(1, Math.min(12, Number(raw.guests) || 1)),
-    category: categories.includes(raw.category as "all" | PropertyCategory)
-      ? (raw.category as "all" | PropertyCategory)
-      : "all",
-    maxPrice: Math.max(200, Math.min(400, Number(raw.maxPrice) || 400)),
-    rating: [0, 4.5, 4.8].includes(Number(raw.rating)) ? Number(raw.rating) : 0,
-    beds: Math.max(0, Math.min(4, Number(raw.beds) || 0)),
-    sort: ["recommended", "price-low", "price-high", "rating"].includes(String(raw.sort))
-      ? (raw.sort as SortOption)
-      : "recommended",
-  }),
+  validateSearch: (input: Record<string, unknown>): StaySearch => {
+    const raw = input as Partial<Record<keyof StaySearch, unknown>>;
+    return {
+      where: typeof raw.where === "string" ? raw.where.slice(0, 80) : "",
+      from: typeof raw.from === "string" ? raw.from : "",
+      to: typeof raw.to === "string" ? raw.to : "",
+      guests: Math.max(1, Math.min(12, Number(raw.guests) || 1)),
+      category: categories.includes(raw.category as "all" | PropertyCategory)
+        ? (raw.category as "all" | PropertyCategory)
+        : "all",
+      maxPrice: Math.max(200, Math.min(400, Number(raw.maxPrice) || 400)),
+      rating: [0, 4.5, 4.8].includes(Number(raw.rating)) ? Number(raw.rating) : 0,
+      beds: Math.max(0, Math.min(4, Number(raw.beds) || 0)),
+      sort: ["recommended", "price-low", "price-high", "rating"].includes(String(raw.sort))
+        ? (raw.sort as SortOption)
+        : "recommended",
+    };
+  },
+
   head: () => ({
     meta: [
       { title: "Browse Handpicked Stays — Nestara" },
