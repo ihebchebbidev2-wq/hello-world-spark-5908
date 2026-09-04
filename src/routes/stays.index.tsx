@@ -243,7 +243,7 @@ function GuestPicker({ value, onChange }: { value: number; onChange: (value: num
   return <Popover><PopoverTrigger asChild><Button variant="ghost" className="h-12 justify-start rounded-xl px-4 sm:rounded-full"><Users className="text-primary" />{value} {t.listings.guests}</Button></PopoverTrigger><PopoverContent className="w-72 p-4"><div className="grid grid-cols-[minmax(0,1fr)_auto] items-center"><div><p className="font-semibold">{t.detail.guestsLabel}</p><p className="text-xs text-muted-foreground">{t.explore.guestHint}</p></div><div className="flex items-center gap-3"><Button size="icon" variant="outline" className="size-8 rounded-full" onClick={() => onChange(Math.max(1, value - 1))} disabled={value <= 1}><Minus /></Button><span className="w-4 text-center text-sm font-bold">{value}</span><Button size="icon" variant="outline" className="size-8 rounded-full" onClick={() => onChange(Math.min(12, value + 1))}><Plus /></Button></div></div></PopoverContent></Popover>;
 }
 
-function FilterPanel({ search, update }: { search: StaySearch; update: (values: Partial<StaySearch>) => void }) {
+function FilterPanel({ search, update }: { search: ResolvedSearch; update: (values: Partial<StaySearch>) => void }) {
   const { t } = useLanguage();
   return <div className="mt-5 space-y-7">
     <fieldset><legend className="text-sm font-bold">{t.explore.propertyType}</legend><div className="mt-3 flex flex-wrap gap-2">{categories.map((category) => <Button key={category} variant={search.category === category ? "default" : "outline"} size="sm" className="rounded-full" onClick={() => update({ category })}>{t.categories[category]}</Button>)}</div></fieldset>
