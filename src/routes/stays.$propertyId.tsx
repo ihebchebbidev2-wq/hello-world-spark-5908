@@ -33,10 +33,9 @@ import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { LanguageSelector } from "@/components/layout/LanguageSelector";
 import { properties } from "@/data/properties";
-import { LanguageProvider, interpolate, useLanguage } from "@/i18n/LanguageProvider";
+import { interpolate, useLanguage } from "@/i18n/LanguageProvider";
 import { useFavorites } from "@/hooks/useFavorites";
 import { cn } from "@/lib/utils";
-import { Toaster } from "@/components/ui/sonner";
 
 export const Route = createFileRoute("/stays/$propertyId")({
   head: ({ params }) => {
@@ -53,17 +52,8 @@ export const Route = createFileRoute("/stays/$propertyId")({
       ],
     };
   },
-  component: ListingRoute,
+  component: ListingDetail,
 });
-
-function ListingRoute() {
-  return (
-    <LanguageProvider>
-      <ListingDetail />
-      <Toaster />
-    </LanguageProvider>
-  );
-}
 
 function ListingDetail() {
   const { propertyId } = Route.useParams();
