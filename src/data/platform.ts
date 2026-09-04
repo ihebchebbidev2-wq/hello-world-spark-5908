@@ -70,7 +70,7 @@ export type TeamMember = { id: string; name: string; email: string; scopes: ("ca
 export type RateRules = { weekend: number; longStay: number; lastMinute: number };
 
 const ids = properties.map((p) => p.id) as string[];
-const pid = (i: number) => ids[i] ?? pid(0)!;
+const pid = (i: number): string => ids[i] ?? "listing";
 
 export const seedBookings: Booking[] = [
   { id: "bk-1", propertyId: pid(0), guestName: "Clara Mercier", from: "2026-09-18", to: "2026-09-22", nights: 4, guests: 2, totalUsd: 984, status: "confirmed" },
