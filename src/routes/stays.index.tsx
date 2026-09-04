@@ -200,14 +200,18 @@ function StaysPage() {
                   </SheetContent>
                 </Sheet>
                 <Select value={search.sort} onValueChange={(sort: SortOption) => update({ sort })}>
-                  <SelectTrigger className="h-10 w-11 sm:w-48"><ArrowUpDown className="size-4 shrink-0 sm:hidden" /><span className="hidden sm:block"><SelectValue /></span></SelectTrigger>
-                  <SelectContent>
+                  <SelectTrigger aria-label={t.explore.sortBy} className="h-10 w-11 justify-center gap-0 sm:w-52 sm:justify-between sm:gap-2 [&>svg:last-child]:hidden sm:[&>svg:last-child]:block">
+                    <ArrowUpDown className="size-4 shrink-0 sm:hidden" />
+                    <span className="hidden truncate text-sm sm:inline">{sortLabels(t)[search.sort]}</span>
+                  </SelectTrigger>
+                  <SelectContent align="end">
                     <SelectItem value="recommended">{t.explore.recommended}</SelectItem>
                     <SelectItem value="price-low">{t.explore.priceLow}</SelectItem>
                     <SelectItem value="price-high">{t.explore.priceHigh}</SelectItem>
                     <SelectItem value="rating">{t.explore.topRated}</SelectItem>
                   </SelectContent>
                 </Select>
+
               </div>
             </div>
 
