@@ -1,8 +1,15 @@
-export type Locale = "en" | "fr";
+import { de } from "./locales/de";
+import { es } from "./locales/es";
+import { pt } from "./locales/pt";
 
-export const locales: { code: Locale; label: string; short: string; flag: string }[] = [
-  { code: "en", label: "English", short: "EN", flag: "EN" },
-  { code: "fr", label: "Français", short: "FR", flag: "FR" },
+export type Locale = "en" | "fr" | "es" | "de" | "pt";
+
+export const locales: { code: Locale; label: string; short: string }[] = [
+  { code: "en", label: "English", short: "EN" },
+  { code: "fr", label: "Français", short: "FR" },
+  { code: "es", label: "Español", short: "ES" },
+  { code: "de", label: "Deutsch", short: "DE" },
+  { code: "pt", label: "Português", short: "PT" },
 ];
 
 export const translations = {
@@ -231,6 +238,79 @@ export const translations = {
       terms: "Terms",
     },
 
+    app: {
+      nav: { trips: "My trips", favourites: "Favourites", messages: "Messages", host: "Host dashboard", admin: "Admin", profile: "Profile", signOut: "Sign out" },
+      auth: {
+        signIn: "Sign in", signUp: "Create account", email: "Email address", password: "Password", name: "Full name",
+        forgot: "Forgot your password?", resetSent: "Password reset link sent", welcome: "Welcome back",
+        intro: "Sign in to manage your trips, messages and listings.", createIntro: "One account to travel and to host.",
+        haveAccount: "Already have an account?", noAccount: "New to Nestara?", iAm: "I want to", asGuest: "Book stays",
+        asHost: "Publish a place", signedIn: "Signed in as {name}", signedOut: "You are signed out",
+        created: "Account created — welcome to Nestara", verifyEmail: "Verify your email to unlock payouts", verified: "Email verified",
+        demoNote: "Demo experience — no real credentials are stored.",
+      },
+      profile: {
+        title: "Your profile", subtitle: "Name, contact details, language and currency preferences.",
+        photo: "Profile photo", changePhoto: "Change photo", save: "Save changes", saved: "Profile updated",
+        preferences: "Preferences", language: "Language", currency: "Currency", security: "Security",
+        password: "Change password", twoFactor: "Two-factor authentication", role: "Account role",
+      },
+      trips: {
+        title: "My trips", subtitle: "Every stay you have requested, confirmed or completed.",
+        upcoming: "Upcoming", past: "Past", empty: "No trips yet — your next stay starts with a search.",
+        nights: "nights", total: "Total", cancel: "Cancel booking", cancelled: "Booking cancelled",
+        view: "View stay", message: "Message host", receipt: "Download receipt", receiptReady: "Receipt generated",
+      },
+      status: { pending: "Pending", confirmed: "Confirmed", declined: "Declined", cancelled: "Cancelled", completed: "Completed", refunded: "Refunded" },
+      messages: {
+        title: "Messages", subtitle: "Threaded conversations with hosts and guests.",
+        empty: "No conversations yet.", placeholder: "Write a message…", send: "Send", sent: "Message sent",
+        unread: "unread", selectThread: "Select a conversation to read it.", today: "Today",
+      },
+      favourites: { title: "Favourites", subtitle: "Places you saved for later.", empty: "You have not saved a stay yet." },
+      host: {
+        title: "Host dashboard", subtitle: "Your listings, calendar, requests and performance.",
+        overview: "Overview", listings: "Listings", calendar: "Calendar & rates", requests: "Requests",
+        reviews: "Reviews", team: "Team", payouts: "Payouts",
+        bookings: "Bookings", revenue: "Revenue", confirmationRate: "Confirmation rate", avgRating: "Average rating",
+        monthly: "Bookings per month", newListing: "New listing", listingStatus: "Status",
+        draft: "Draft", published: "Published", suspended: "Suspended", publish: "Publish", unpublish: "Unpublish",
+        statusChanged: "Listing status updated", edit: "Edit", nightlyRate: "Nightly rate",
+        blockedDates: "Blocked dates", blockHint: "Select dates to block or unblock availability.",
+        blocked: "Dates updated", rateRules: "Automatic rate rules", weekend: "Weekend uplift",
+        longStay: "Weekly stay discount", lastMinute: "Last-minute discount", ruleSaved: "Rate rules saved",
+        accept: "Accept", decline: "Decline", accepted: "Booking confirmed", declinedToast: "Booking declined",
+        noRequests: "No pending requests.", invite: "Invite collaborator", inviteSent: "Invitation sent",
+        permissions: "Permissions", calendarRates: "Calendar & rates", messaging: "Messaging",
+        member: "Member", owner: "Owner", stripeTitle: "Payouts account", stripeBody: "Identity verification and payouts are handled by our payment partner.",
+        stripeCta: "Continue onboarding", stripeDone: "Onboarding step completed", nextPayout: "Next payout",
+        newListingTitle: "Publish a new place", newListingHint: "Draft it now, publish when you are ready.",
+        listingName: "Listing name", listingCity: "City", listingType: "Property type", listingGuests: "Guests",
+        listingPrice: "Nightly price", listingDescription: "Description", saveDraft: "Save as draft", created: "Listing created as a draft",
+      },
+      admin: {
+        title: "Admin back office", subtitle: "Moderation, users, payouts and platform settings.",
+        approvals: "Listing approvals", users: "Users", payouts: "Payouts", settings: "Settings", reports: "Reports",
+        approve: "Approve", reject: "Reject", suspend: "Suspend", reinstate: "Reinstate",
+        approved: "Listing approved", rejected: "Listing rejected", updated: "Account updated",
+        searchUsers: "Search by name or email", noReports: "The moderation queue is empty.",
+        commission: "Commission rate", commissionHint: "Applied to every confirmed booking.", saveSettings: "Save settings",
+        settingsSaved: "Platform settings saved", host: "Host", guest: "Guest", admin: "Admin",
+        payoutStatus: "Payout status", paid: "Paid", scheduled: "Scheduled", reported: "Reported content",
+        auditNote: "Every admin action is recorded in the audit log.",
+      },
+      checkout: {
+        title: "Confirm and pay", summary: "Price details", nightsLine: "{price} × {nights} nights",
+        serviceFee: "Service fee", taxes: "Taxes", total: "Total", pay: "Confirm and pay",
+        paid: "Booking request sent to the host", secure: "Card details are handled by our payment partner.",
+        policy: "Cancellation policy", flexible: "Flexible — free cancellation up to 24h before check-in",
+        contact: "Contact details", request: "Message to host", optional: "optional",
+      },
+      cookies: { text: "We use cookies to run the site and improve your experience.", accept: "Accept all", decline: "Essential only", more: "Privacy policy" },
+      legal: { privacy: "Privacy policy", terms: "Terms of service", updated: "Last updated" },
+      currency: { label: "Currency", change: "Change currency" },
+      common: { back: "Back", cancel: "Cancel", save: "Save", close: "Close", loading: "Loading…", all: "All", search: "Search", of: "of" },
+    },
   },
   fr: {
     brand: "Nestara",
@@ -458,7 +538,86 @@ export const translations = {
       terms: "Conditions",
     },
 
+    app: {
+      nav: { trips: "Mes voyages", favourites: "Favoris", messages: "Messages", host: "Espace hôte", admin: "Admin", profile: "Profil", signOut: "Se déconnecter" },
+      auth: {
+        signIn: "Se connecter", signUp: "Créer un compte", email: "Adresse e-mail", password: "Mot de passe", name: "Nom complet",
+        forgot: "Mot de passe oublié ?", resetSent: "Lien de réinitialisation envoyé", welcome: "Bon retour",
+        intro: "Connectez-vous pour gérer vos voyages, messages et annonces.", createIntro: "Un seul compte pour voyager et héberger.",
+        haveAccount: "Vous avez déjà un compte ?", noAccount: "Nouveau sur Nestara ?", iAm: "Je souhaite", asGuest: "Réserver des séjours",
+        asHost: "Publier un logement", signedIn: "Connecté en tant que {name}", signedOut: "Vous êtes déconnecté",
+        created: "Compte créé — bienvenue sur Nestara", verifyEmail: "Vérifiez votre e-mail pour activer les versements", verified: "E-mail vérifié",
+        demoNote: "Démonstration — aucune donnée réelle n’est enregistrée.",
+      },
+      profile: {
+        title: "Votre profil", subtitle: "Nom, coordonnées, langue et devise.",
+        photo: "Photo de profil", changePhoto: "Changer la photo", save: "Enregistrer", saved: "Profil mis à jour",
+        preferences: "Préférences", language: "Langue", currency: "Devise", security: "Sécurité",
+        password: "Changer le mot de passe", twoFactor: "Authentification à deux facteurs", role: "Rôle du compte",
+      },
+      trips: {
+        title: "Mes voyages", subtitle: "Tous vos séjours demandés, confirmés ou terminés.",
+        upcoming: "À venir", past: "Passés", empty: "Aucun voyage — votre prochain séjour commence par une recherche.",
+        nights: "nuits", total: "Total", cancel: "Annuler la réservation", cancelled: "Réservation annulée",
+        view: "Voir le séjour", message: "Contacter l’hôte", receipt: "Télécharger le reçu", receiptReady: "Reçu généré",
+      },
+      status: { pending: "En attente", confirmed: "Confirmé", declined: "Refusé", cancelled: "Annulé", completed: "Terminé", refunded: "Remboursé" },
+      messages: {
+        title: "Messages", subtitle: "Conversations avec les hôtes et les voyageurs.",
+        empty: "Aucune conversation.", placeholder: "Écrire un message…", send: "Envoyer", sent: "Message envoyé",
+        unread: "non lus", selectThread: "Sélectionnez une conversation.", today: "Aujourd’hui",
+      },
+      favourites: { title: "Favoris", subtitle: "Les logements que vous avez enregistrés.", empty: "Aucun favori pour le moment." },
+      host: {
+        title: "Espace hôte", subtitle: "Vos annonces, votre calendrier, vos demandes et vos performances.",
+        overview: "Vue d’ensemble", listings: "Annonces", calendar: "Calendrier & tarifs", requests: "Demandes",
+        reviews: "Avis", team: "Équipe", payouts: "Versements",
+        bookings: "Réservations", revenue: "Revenus", confirmationRate: "Taux de confirmation", avgRating: "Note moyenne",
+        monthly: "Réservations par mois", newListing: "Nouvelle annonce", listingStatus: "Statut",
+        draft: "Brouillon", published: "Publiée", suspended: "Suspendue", publish: "Publier", unpublish: "Dépublier",
+        statusChanged: "Statut de l’annonce mis à jour", edit: "Modifier", nightlyRate: "Tarif par nuit",
+        blockedDates: "Dates bloquées", blockHint: "Sélectionnez des dates pour bloquer ou libérer la disponibilité.",
+        blocked: "Dates mises à jour", rateRules: "Règles tarifaires automatiques", weekend: "Majoration week-end",
+        longStay: "Remise séjour à la semaine", lastMinute: "Remise dernière minute", ruleSaved: "Règles enregistrées",
+        accept: "Accepter", decline: "Refuser", accepted: "Réservation confirmée", declinedToast: "Réservation refusée",
+        noRequests: "Aucune demande en attente.", invite: "Inviter un collaborateur", inviteSent: "Invitation envoyée",
+        permissions: "Permissions", calendarRates: "Calendrier & tarifs", messaging: "Messagerie",
+        member: "Membre", owner: "Propriétaire", stripeTitle: "Compte de versement", stripeBody: "La vérification d’identité et les versements sont gérés par notre partenaire de paiement.",
+        stripeCta: "Continuer l’inscription", stripeDone: "Étape d’inscription terminée", nextPayout: "Prochain versement",
+        newListingTitle: "Publier un nouveau logement", newListingHint: "Créez un brouillon, publiez quand vous êtes prêt.",
+        listingName: "Nom de l’annonce", listingCity: "Ville", listingType: "Type de logement", listingGuests: "Voyageurs",
+        listingPrice: "Prix par nuit", listingDescription: "Description", saveDraft: "Enregistrer le brouillon", created: "Annonce créée en brouillon",
+      },
+      admin: {
+        title: "Back-office admin", subtitle: "Modération, utilisateurs, versements et réglages.",
+        approvals: "Validation des annonces", users: "Utilisateurs", payouts: "Versements", settings: "Réglages", reports: "Signalements",
+        approve: "Approuver", reject: "Rejeter", suspend: "Suspendre", reinstate: "Réactiver",
+        approved: "Annonce approuvée", rejected: "Annonce rejetée", updated: "Compte mis à jour",
+        searchUsers: "Rechercher par nom ou e-mail", noReports: "La file de modération est vide.",
+        commission: "Taux de commission", commissionHint: "Appliqué à chaque réservation confirmée.", saveSettings: "Enregistrer",
+        settingsSaved: "Réglages enregistrés", host: "Hôte", guest: "Voyageur", admin: "Admin",
+        payoutStatus: "Statut du versement", paid: "Versé", scheduled: "Programmé", reported: "Contenus signalés",
+        auditNote: "Chaque action admin est enregistrée dans le journal d’audit.",
+      },
+      checkout: {
+        title: "Confirmer et payer", summary: "Détail du prix", nightsLine: "{price} × {nights} nuits",
+        serviceFee: "Frais de service", taxes: "Taxes", total: "Total", pay: "Confirmer et payer",
+        paid: "Demande envoyée à l’hôte", secure: "Les données de carte sont gérées par notre partenaire de paiement.",
+        policy: "Politique d’annulation", flexible: "Flexible — annulation gratuite jusqu’à 24 h avant l’arrivée",
+        contact: "Coordonnées", request: "Message à l’hôte", optional: "facultatif",
+      },
+      cookies: { text: "Nous utilisons des cookies pour faire fonctionner le site et améliorer votre expérience.", accept: "Tout accepter", decline: "Essentiels uniquement", more: "Politique de confidentialité" },
+      legal: { privacy: "Politique de confidentialité", terms: "Conditions d’utilisation", updated: "Dernière mise à jour" },
+      currency: { label: "Devise", change: "Changer de devise" },
+      common: { back: "Retour", cancel: "Annuler", save: "Enregistrer", close: "Fermer", loading: "Chargement…", all: "Tous", search: "Rechercher", of: "sur" },
+    },
   },
 } as const;
 
 export type Dictionary = (typeof translations)["en"];
+
+export type DeepPartial<T> = {
+  [K in keyof T]?: T[K] extends readonly unknown[] ? T[K] : T[K] extends object ? DeepPartial<T[K]> : T[K];
+};
+
+export const extraTranslations: Record<"es" | "de" | "pt", DeepPartial<Dictionary>> = { es, de, pt };
