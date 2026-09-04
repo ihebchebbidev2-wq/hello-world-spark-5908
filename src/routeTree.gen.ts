@@ -24,9 +24,9 @@ const StaysIndexRoute = StaysIndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const StaysPropertyIdRoute = StaysPropertyIdRouteImport.update({
-  id: '/stays/$propertyId',
-  path: '/stays/$propertyId',
-  getParentRoute: () => rootRouteImport,
+  id: '/$propertyId',
+  path: '/$propertyId',
+  getParentRoute: () => StaysRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -55,7 +55,6 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  StaysPropertyIdRoute: typeof StaysPropertyIdRoute
   StaysIndexRoute: typeof StaysIndexRoute
 }
 
@@ -77,17 +76,16 @@ declare module '@tanstack/react-router' {
     }
     '/stays/$propertyId': {
       id: '/stays/$propertyId'
-      path: '/stays/$propertyId'
+      path: '/$propertyId'
       fullPath: '/stays/$propertyId'
       preLoaderRoute: typeof StaysPropertyIdRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof StaysRoute
     }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  StaysPropertyIdRoute: StaysPropertyIdRoute,
   StaysIndexRoute: StaysIndexRoute,
 }
 export const routeTree = rootRouteImport
