@@ -614,7 +614,17 @@ export const translations = {
   },
 } as const;
 
-export type Dictionary = (typeof translations)["en"];
+type Widen<T> = T extends string
+  ? string
+  : T extends number
+    ? number
+    : T extends boolean
+      ? boolean
+      : T extends readonly (infer U)[]
+        ? readonly Widen<U>[]
+        : { -readonly [K in keyof T]: Widen<T[K]> };
+
+export type Dictionary = Widen<(typeof translations)["en"]>;
 
 export type DeepPartial<T> = {
   [K in keyof T]?: T[K] extends readonly unknown[] ? T[K] : T[K] extends object ? DeepPartial<T[K]> : T[K];
