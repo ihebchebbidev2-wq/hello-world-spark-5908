@@ -1,0 +1,123 @@
+import { ArrowUpRight, Facebook, Instagram, Linkedin, Tent, Twitter } from "lucide-react";
+
+import { LanguageSelector } from "@/components/layout/LanguageSelector";
+import { useLanguage } from "@/i18n/LanguageProvider";
+
+export function Footer() {
+  const { t } = useLanguage();
+  const year = new Date().getFullYear();
+
+  const columns = [
+    { title: t.footer.explore, items: [t.footer.destinations, t.footer.resorts, t.footer.hotels] },
+    { title: t.footer.company, items: [t.footer.about, t.footer.careers, t.footer.press] },
+    { title: t.footer.support, items: [t.footer.help, t.footer.cancellation, t.footer.contact] },
+  ];
+
+  const socials = [
+    { icon: Instagram, label: "Instagram" },
+    { icon: Twitter, label: "X" },
+    { icon: Facebook, label: "Facebook" },
+    { icon: Linkedin, label: "LinkedIn" },
+  ];
+
+  return (
+    <footer className="mx-auto max-w-7xl px-5 pb-12 sm:px-8">
+      <div className="relative isolate overflow-hidden rounded-[2rem] bg-navy p-8 text-navy-foreground sm:p-14">
+        <svg
+          aria-hidden
+          className="pointer-events-none absolute -top-24 -right-24 size-80 text-lime opacity-15"
+          viewBox="0 0 200 200"
+        >
+          <circle cx="100" cy="100" r="95" fill="none" stroke="currentColor" strokeWidth="1" />
+          <circle cx="100" cy="100" r="65" fill="none" stroke="currentColor" strokeWidth="1" />
+          <circle cx="100" cy="100" r="35" fill="none" stroke="currentColor" strokeWidth="1" />
+        </svg>
+
+        <div className="relative grid gap-12 lg:grid-cols-[1.3fr_repeat(3,0.7fr)]">
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <span className="grid size-9 place-items-center rounded-xl bg-lime text-lime-foreground">
+                <Tent className="size-5" aria-hidden />
+              </span>
+              <span className="font-display text-xl font-bold">{t.brand}</span>
+            </div>
+            <p className="mt-4 max-w-xs text-sm text-navy-muted">{t.footer.tagline}</p>
+
+            <p className="mt-8 text-xs font-semibold tracking-[0.2em] text-navy-muted uppercase">
+              {t.footer.followUs}
+            </p>
+            <div className="mt-3 flex items-center gap-2.5">
+              {socials.map(({ icon: Icon, label }) => (
+                <a
+                  key={label}
+                  href="#top"
+                  aria-label={label}
+                  className="grid size-10 place-items-center rounded-full border border-white/15 text-navy-foreground transition-colors hover:border-lime hover:bg-lime hover:text-lime-foreground focus-visible:ring-2 focus-visible:ring-lime focus-visible:outline-none"
+                >
+                  <Icon className="size-4" aria-hidden />
+                </a>
+              ))}
+            </div>
+
+            <div className="mt-6">
+              <LanguageSelector variant="dark" />
+            </div>
+          </div>
+
+          {columns.map((col) => (
+            <div key={col.title}>
+              <h4 className="text-xs font-semibold tracking-[0.2em] text-navy-muted uppercase">
+                {col.title}
+              </h4>
+              <ul className="mt-4 space-y-3">
+                {col.items.map((item) => (
+                  <li key={item}>
+                    <a
+                      href="#top"
+                      className="text-sm text-navy-foreground/85 transition-colors hover:text-lime focus-visible:text-lime focus-visible:outline-none"
+                    >
+                      {item}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="relative mt-14 border-t border-white/10 pt-12">
+          <div className="min-w-0">
+            <p className="text-xs font-semibold tracking-[0.2em] text-navy-muted uppercase">
+              {t.footer.contactTitle}
+            </p>
+            <a
+              href={`mailto:${t.footer.email}`}
+              className="group mt-3 inline-flex max-w-full items-center gap-3 font-display text-2xl font-bold break-all transition-colors hover:text-lime focus-visible:text-lime focus-visible:outline-none sm:text-4xl lg:text-5xl"
+            >
+              {t.footer.email}
+              <ArrowUpRight
+                className="size-6 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 sm:size-8"
+                aria-hidden
+              />
+            </a>
+          </div>
+        </div>
+
+
+        <div className="relative mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-navy-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {year} {t.brand}. {t.footer.rights}
+          </p>
+          <div className="flex items-center gap-6">
+            <a href="#top" className="transition-colors hover:text-lime">
+              {t.footer.privacy}
+            </a>
+            <a href="#top" className="transition-colors hover:text-lime">
+              {t.footer.terms}
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
