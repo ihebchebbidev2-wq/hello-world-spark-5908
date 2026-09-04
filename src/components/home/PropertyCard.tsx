@@ -1,7 +1,7 @@
 import { Bath, BedDouble, Heart, Ruler, Star, Users } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
-import type { Property } from "@/data/properties";
+import { cityName, type Property } from "@/data/properties";
 import { interpolate, useLanguage } from "@/i18n/LanguageProvider";
 import { cn } from "@/lib/utils";
 

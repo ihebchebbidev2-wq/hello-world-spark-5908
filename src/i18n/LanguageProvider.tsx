@@ -30,7 +30,7 @@ function deepMerge<T>(base: T, override: unknown): T {
 
 const dictionaries: Record<Locale, Dictionary> = {
   en: translations.en as Dictionary,
-  fr: translations.fr as Dictionary,
+  fr: translations.fr as unknown as Dictionary,
   es: deepMerge(translations.en as Dictionary, extraTranslations.es),
   de: deepMerge(translations.en as Dictionary, extraTranslations.de),
   pt: deepMerge(translations.en as Dictionary, extraTranslations.pt),
