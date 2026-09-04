@@ -69,14 +69,15 @@ export type TeamMember = { id: string; name: string; email: string; scopes: ("ca
 
 export type RateRules = { weekend: number; longStay: number; lastMinute: number };
 
-const ids = properties.map((p) => p.id);
+const ids = properties.map((p) => p.id) as string[];
+const pid = (i: number) => ids[i] ?? pid(0)!;
 
 export const seedBookings: Booking[] = [
-  { id: "bk-1", propertyId: ids[0], guestName: "Clara Mercier", from: "2026-09-18", to: "2026-09-22", nights: 4, guests: 2, totalUsd: 984, status: "confirmed" },
-  { id: "bk-2", propertyId: ids[1], guestName: "Jonas Weber", from: "2026-10-04", to: "2026-10-07", nights: 3, guests: 4, totalUsd: 897, status: "pending" },
-  { id: "bk-3", propertyId: ids[2], guestName: "Ana Ferreira", from: "2026-06-02", to: "2026-06-06", nights: 4, guests: 2, totalUsd: 1436, status: "completed" },
-  { id: "bk-4", propertyId: ids[3], guestName: "Marc Dupont", from: "2026-05-11", to: "2026-05-13", nights: 2, guests: 3, totalUsd: 498, status: "cancelled" },
-  { id: "bk-5", propertyId: ids[4], guestName: "Lucía Ortega", from: "2026-11-01", to: "2026-11-05", nights: 4, guests: 5, totalUsd: 1320, status: "pending" },
+  { id: "bk-1", propertyId: pid(0), guestName: "Clara Mercier", from: "2026-09-18", to: "2026-09-22", nights: 4, guests: 2, totalUsd: 984, status: "confirmed" },
+  { id: "bk-2", propertyId: pid(1), guestName: "Jonas Weber", from: "2026-10-04", to: "2026-10-07", nights: 3, guests: 4, totalUsd: 897, status: "pending" },
+  { id: "bk-3", propertyId: pid(2), guestName: "Ana Ferreira", from: "2026-06-02", to: "2026-06-06", nights: 4, guests: 2, totalUsd: 1436, status: "completed" },
+  { id: "bk-4", propertyId: pid(3), guestName: "Marc Dupont", from: "2026-05-11", to: "2026-05-13", nights: 2, guests: 3, totalUsd: 498, status: "cancelled" },
+  { id: "bk-5", propertyId: pid(4), guestName: "Lucía Ortega", from: "2026-11-01", to: "2026-11-05", nights: 4, guests: 5, totalUsd: 1320, status: "pending" },
 ];
 
 export const seedListings: HostListing[] = properties.map((p, index) => ({
@@ -90,7 +91,7 @@ export const seedListings: HostListing[] = properties.map((p, index) => ({
 export const seedThreads: Thread[] = [
   {
     id: "th-1",
-    propertyId: ids[0],
+    propertyId: pid(0),
     withName: "Maya (host)",
     unread: 2,
     messages: [
@@ -101,7 +102,7 @@ export const seedThreads: Thread[] = [
   },
   {
     id: "th-2",
-    propertyId: ids[1],
+    propertyId: pid(1),
     withName: "Jonas Weber",
     unread: 0,
     messages: [
@@ -111,7 +112,7 @@ export const seedThreads: Thread[] = [
   },
   {
     id: "th-3",
-    propertyId: ids[2],
+    propertyId: pid(2),
     withName: "Ana Ferreira",
     unread: 1,
     messages: [{ id: "m1", from: "them", text: "Thanks again — we left the keys in the box.", time: "18:45" }],
@@ -133,9 +134,9 @@ export const seedPayouts: Payout[] = [
 ];
 
 export const seedReviews: HostReview[] = [
-  { id: "rv-1", propertyId: ids[0], author: "Clara M.", rating: 5, text: "Spotless, quiet and exactly as pictured.", date: "2026-07-22" },
-  { id: "rv-2", propertyId: ids[1], author: "Daniel O.", rating: 4, text: "Great location, the kitchen could use more pans.", date: "2026-06-14" },
-  { id: "rv-3", propertyId: ids[2], author: "Mei T.", rating: 5, text: "The host thought of everything for our late arrival.", date: "2026-05-03" },
+  { id: "rv-1", propertyId: pid(0), author: "Clara M.", rating: 5, text: "Spotless, quiet and exactly as pictured.", date: "2026-07-22" },
+  { id: "rv-2", propertyId: pid(1), author: "Daniel O.", rating: 4, text: "Great location, the kitchen could use more pans.", date: "2026-06-14" },
+  { id: "rv-3", propertyId: pid(2), author: "Mei T.", rating: 5, text: "The host thought of everything for our late arrival.", date: "2026-05-03" },
 ];
 
 export const seedTeam: TeamMember[] = [
