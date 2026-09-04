@@ -1,6 +1,12 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
-import { translations, type Dictionary, type Locale } from "./translations";
+import {
+  extraTranslations,
+  locales,
+  translations,
+  type Dictionary,
+  type Locale,
+} from "./translations";
 
 const STORAGE_KEY = "nestara.locale";
 
@@ -12,16 +18,39 @@ type LanguageContextValue = {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
+function deepMerge<T>(base: T, override: unknown): T {
+  if (override === undefined || override === null) return base;
+  if (Array.isArray(base) || typeof base !== "object") return override as T;
+  const result: Record<string, unknown> = { ...(base as Record<string, unknown>) };
+  for (const [key, value] of Object.entries(override as Record<string, unknown>)) {
+    result[key] = deepMerge((base as Record<string, unknown>)[key], value);
+  }
+  return result as T;
+}
+
+const dictionaries: Record<Locale, Dictionary> = {
+  en: translations.en as Dictionary,
+  fr: translations.fr as unknown as Dictionary,
+  es: deepMerge(translations.en as Dictionary, extraTranslations.es),
+  de: deepMerge(translations.en as Dictionary, extraTranslations.de),
+  pt: deepMerge(translations.en as Dictionary, extraTranslations.pt),
+};
+
+function isLocale(value: string | null): value is Locale {
+  return !!value && locales.some((l) => l.code === value);
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>("en");
 
   useEffect(() => {
     const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored === "en" || stored === "fr") {
+    if (isLocale(stored)) {
       setLocaleState(stored);
       return;
     }
-    if (window.navigator.language?.toLowerCase().startsWith("fr")) setLocaleState("fr");
+    const detected = window.navigator.language?.slice(0, 2).toLowerCase() ?? "";
+    if (isLocale(detected)) setLocaleState(detected);
   }, []);
 
   useEffect(() => {
@@ -34,7 +63,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo(
-    () => ({ locale, setLocale, t: translations[locale] as Dictionary }),
+    () => ({ locale, setLocale, t: dictionaries[locale] }),
     [locale, setLocale],
   );
 

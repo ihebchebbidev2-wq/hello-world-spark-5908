@@ -1,3 +1,5 @@
+import type { Locale } from "@/i18n/translations";
+
 import prop1 from "@/assets/prop-1.jpg";
 import prop2 from "@/assets/prop-2.jpg";
 import prop3 from "@/assets/prop-3.jpg";
@@ -10,7 +12,7 @@ export type PropertyCategory = "apartment" | "resort" | "lodge" | "hotel";
 export type Property = {
   id: string;
   name: string;
-  location: { en: string; fr: string };
+  location: Partial<Record<Locale, string>> & { en: string };
   image: string;
   category: PropertyCategory;
   guests: number;
@@ -20,6 +22,10 @@ export type Property = {
   price: number;
   rating: number;
 };
+
+export function cityName(property: Property, locale: Locale) {
+  return property.location[locale] ?? property.location.en;
+}
 
 export const categories: ("all" | PropertyCategory)[] = [
   "all",
