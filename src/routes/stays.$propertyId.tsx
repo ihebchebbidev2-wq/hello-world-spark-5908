@@ -20,6 +20,7 @@ import {
   Share2,
   Snowflake,
   Star,
+  Tent,
   Users,
   Wifi,
   type LucideIcon,
@@ -33,10 +34,9 @@ import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { LanguageSelector } from "@/components/layout/LanguageSelector";
 import { properties } from "@/data/properties";
-import { LanguageProvider, interpolate, useLanguage } from "@/i18n/LanguageProvider";
+import { interpolate, useLanguage } from "@/i18n/LanguageProvider";
 import { useFavorites } from "@/hooks/useFavorites";
 import { cn } from "@/lib/utils";
-import { Toaster } from "@/components/ui/sonner";
 
 export const Route = createFileRoute("/stays/$propertyId")({
   head: ({ params }) => {
@@ -53,17 +53,8 @@ export const Route = createFileRoute("/stays/$propertyId")({
       ],
     };
   },
-  component: ListingRoute,
+  component: ListingDetail,
 });
-
-function ListingRoute() {
-  return (
-    <LanguageProvider>
-      <ListingDetail />
-      <Toaster />
-    </LanguageProvider>
-  );
-}
 
 function ListingDetail() {
   const { propertyId } = Route.useParams();
@@ -82,7 +73,7 @@ function ListingDetail() {
       <main className="grid min-h-screen place-items-center bg-background px-5 text-center">
         <div>
           <h1 className="font-display text-3xl font-semibold">Stay not found</h1>
-          <Button asChild className="mt-6"><Link to="/">{t.detail.back}</Link></Button>
+          <Button asChild className="mt-6"><Link to="/stays">{t.detail.back}</Link></Button>
         </div>
       </main>
     );
@@ -121,8 +112,8 @@ function ListingDetail() {
       <header className="border-b border-border bg-surface">
         <div className="mx-auto grid h-16 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 sm:px-6 lg:h-20 lg:px-8">
           <Link to="/" className="flex min-w-0 items-center gap-2 font-display font-semibold">
-            <span className="grid size-9 shrink-0 place-items-center rounded-md bg-primary text-primary-foreground">N</span>
-            <span className="truncate text-lg">Nestara</span>
+            <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground"><Tent className="size-5" aria-hidden /></span>
+            <span className="truncate text-lg">{t.brand}</span>
           </Link>
           <LanguageSelector />
         </div>
@@ -131,7 +122,7 @@ function ListingDetail() {
       <div className="mx-auto max-w-7xl px-0 sm:px-6 lg:px-8">
         <div className="hidden items-center justify-between py-6 sm:flex">
           <Button variant="ghost" asChild className="px-0 hover:bg-transparent">
-            <Link to="/"><ArrowLeft aria-hidden />{t.detail.back}</Link>
+            <Link to="/stays"><ArrowLeft aria-hidden />{t.detail.back}</Link>
           </Button>
           <div className="flex gap-2">
             <Button variant="outline" onClick={() => void shareListing()}><Share2 aria-hidden />{t.detail.share}</Button>
@@ -160,7 +151,7 @@ function ListingDetail() {
           ))}
 
           <div className="absolute inset-x-0 top-0 z-20 flex items-center justify-between p-4 sm:hidden">
-            <Button size="icon" variant="secondary" asChild className="rounded-full bg-surface/90 backdrop-blur"><Link to="/" aria-label={t.detail.back}><ChevronLeft /></Link></Button>
+            <Button size="icon" variant="secondary" asChild className="rounded-full bg-surface/90 backdrop-blur"><Link to="/stays" aria-label={t.detail.back}><ChevronLeft /></Link></Button>
             <div className="flex gap-2">
               <Button size="icon" variant="secondary" onClick={() => void shareListing()} aria-label={t.detail.share} className="rounded-full bg-surface/90 backdrop-blur"><Share2 /></Button>
               <Button size="icon" variant="secondary" onClick={() => toggle(property.id)} aria-label={t.listings.save} aria-pressed={favorite} className="rounded-full bg-surface/90 backdrop-blur"><Heart className={cn(favorite && "fill-destructive text-destructive")} /></Button>

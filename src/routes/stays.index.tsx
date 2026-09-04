@@ -36,18 +36,19 @@ import { cn } from "@/lib/utils";
 
 type SortOption = "recommended" | "price-low" | "price-high" | "rating";
 type StaySearch = {
-  where: string;
-  from: string;
-  to: string;
-  guests: number;
-  category: "all" | PropertyCategory;
-  maxPrice: number;
-  rating: number;
-  beds: number;
-  sort: SortOption;
+  where?: string;
+  from?: string;
+  to?: string;
+  guests?: number;
+  category?: "all" | PropertyCategory;
+  maxPrice?: number;
+  rating?: number;
+  beds?: number;
+  sort?: SortOption;
 };
+type ResolvedSearch = Required<StaySearch>;
 
-const defaults: StaySearch = {
+const defaults: ResolvedSearch = {
   where: "",
   from: "",
   to: "",
@@ -59,22 +60,26 @@ const defaults: StaySearch = {
   sort: "recommended",
 };
 
-export const Route = createFileRoute("/stays")({
-  validateSearch: (raw: Record<string, unknown>): StaySearch => ({
-    where: typeof raw.where === "string" ? raw.where.slice(0, 80) : "",
-    from: typeof raw.from === "string" ? raw.from : "",
-    to: typeof raw.to === "string" ? raw.to : "",
-    guests: Math.max(1, Math.min(12, Number(raw.guests) || 1)),
-    category: categories.includes(raw.category as "all" | PropertyCategory)
-      ? (raw.category as "all" | PropertyCategory)
-      : "all",
-    maxPrice: Math.max(200, Math.min(400, Number(raw.maxPrice) || 400)),
-    rating: [0, 4.5, 4.8].includes(Number(raw.rating)) ? Number(raw.rating) : 0,
-    beds: Math.max(0, Math.min(4, Number(raw.beds) || 0)),
-    sort: ["recommended", "price-low", "price-high", "rating"].includes(String(raw.sort))
-      ? (raw.sort as SortOption)
-      : "recommended",
-  }),
+export const Route = createFileRoute("/stays/")({
+  validateSearch: (input: Record<string, unknown>): StaySearch => {
+    const raw = input as Partial<Record<keyof StaySearch, unknown>>;
+    return {
+      where: typeof raw.where === "string" ? raw.where.slice(0, 80) : "",
+      from: typeof raw.from === "string" ? raw.from : "",
+      to: typeof raw.to === "string" ? raw.to : "",
+      guests: Math.max(1, Math.min(12, Number(raw.guests) || 1)),
+      category: categories.includes(raw.category as "all" | PropertyCategory)
+        ? (raw.category as "all" | PropertyCategory)
+        : "all",
+      maxPrice: Math.max(200, Math.min(400, Number(raw.maxPrice) || 400)),
+      rating: [0, 4.5, 4.8].includes(Number(raw.rating)) ? Number(raw.rating) : 0,
+      beds: Math.max(0, Math.min(4, Number(raw.beds) || 0)),
+      sort: ["recommended", "price-low", "price-high", "rating"].includes(String(raw.sort))
+        ? (raw.sort as SortOption)
+        : "recommended",
+    };
+  },
+
   head: () => ({
     meta: [
       { title: "Browse Handpicked Stays — Nestara" },
@@ -89,8 +94,9 @@ export const Route = createFileRoute("/stays")({
 });
 
 function StaysPage() {
-  const search = Route.useSearch();
-  const navigate = useNavigate({ from: "/stays" });
+  const rawSearch = Route.useSearch();
+  const search: ResolvedSearch = { ...defaults, ...rawSearch };
+  const navigate = useNavigate({ from: "/stays/" });
   const { t, locale } = useLanguage();
   const { isFavorite, toggle } = useFavorites();
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
@@ -194,14 +200,18 @@ function StaysPage() {
                   </SheetContent>
                 </Sheet>
                 <Select value={search.sort} onValueChange={(sort: SortOption) => update({ sort })}>
-                  <SelectTrigger className="h-10 w-11 sm:w-48"><ArrowUpDown className="size-4 shrink-0 sm:hidden" /><span className="hidden sm:block"><SelectValue /></span></SelectTrigger>
-                  <SelectContent>
+                  <SelectTrigger aria-label={t.explore.sortBy} className="h-10 w-11 justify-center gap-0 sm:w-52 sm:justify-between sm:gap-2 [&>svg:last-child]:hidden sm:[&>svg:last-child]:block">
+                    <ArrowUpDown className="size-4 shrink-0 sm:hidden" />
+                    <span className="hidden truncate text-sm sm:inline">{sortLabels(t)[search.sort]}</span>
+                  </SelectTrigger>
+                  <SelectContent align="end">
                     <SelectItem value="recommended">{t.explore.recommended}</SelectItem>
                     <SelectItem value="price-low">{t.explore.priceLow}</SelectItem>
                     <SelectItem value="price-high">{t.explore.priceHigh}</SelectItem>
                     <SelectItem value="rating">{t.explore.topRated}</SelectItem>
                   </SelectContent>
                 </Select>
+
               </div>
             </div>
 
@@ -232,12 +242,21 @@ function StaysPage() {
   );
 }
 
+function sortLabels(t: ReturnType<typeof useLanguage>["t"]): Record<SortOption, string> {
+  return {
+    recommended: t.explore.recommended,
+    "price-low": t.explore.priceLow,
+    "price-high": t.explore.priceHigh,
+    rating: t.explore.topRated,
+  };
+}
+
 function GuestPicker({ value, onChange }: { value: number; onChange: (value: number) => void }) {
   const { t } = useLanguage();
   return <Popover><PopoverTrigger asChild><Button variant="ghost" className="h-12 justify-start rounded-xl px-4 sm:rounded-full"><Users className="text-primary" />{value} {t.listings.guests}</Button></PopoverTrigger><PopoverContent className="w-72 p-4"><div className="grid grid-cols-[minmax(0,1fr)_auto] items-center"><div><p className="font-semibold">{t.detail.guestsLabel}</p><p className="text-xs text-muted-foreground">{t.explore.guestHint}</p></div><div className="flex items-center gap-3"><Button size="icon" variant="outline" className="size-8 rounded-full" onClick={() => onChange(Math.max(1, value - 1))} disabled={value <= 1}><Minus /></Button><span className="w-4 text-center text-sm font-bold">{value}</span><Button size="icon" variant="outline" className="size-8 rounded-full" onClick={() => onChange(Math.min(12, value + 1))}><Plus /></Button></div></div></PopoverContent></Popover>;
 }
 
-function FilterPanel({ search, update }: { search: StaySearch; update: (values: Partial<StaySearch>) => void }) {
+function FilterPanel({ search, update }: { search: ResolvedSearch; update: (values: Partial<StaySearch>) => void }) {
   const { t } = useLanguage();
   return <div className="mt-5 space-y-7">
     <fieldset><legend className="text-sm font-bold">{t.explore.propertyType}</legend><div className="mt-3 flex flex-wrap gap-2">{categories.map((category) => <Button key={category} variant={search.category === category ? "default" : "outline"} size="sm" className="rounded-full" onClick={() => update({ category })}>{t.categories[category]}</Button>)}</div></fieldset>

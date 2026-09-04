@@ -29,16 +29,21 @@ export function Header() {
         </a>
 
         <nav className="hidden justify-center gap-8 lg:flex">
-          {links.map((l) => (
-            {l.href.startsWith("/") ? <Link
-              key={l.href}
-              to="/stays"
-              className="relative text-sm font-medium text-white/85 transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:w-0 after:rounded-full after:bg-lime after:transition-all hover:text-lime hover:after:w-full focus-visible:text-lime focus-visible:outline-none focus-visible:after:w-full"
-            >
-              {l.label}
-            </Link> : <a key={l.href} href={l.href} className="relative text-sm font-medium text-white/85 transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:w-0 after:rounded-full after:bg-lime after:transition-all hover:text-lime hover:after:w-full focus-visible:text-lime focus-visible:outline-none focus-visible:after:w-full">{l.label}</a>}
-          ))}
+          {links.map((l) => {
+            const cls =
+              "relative text-sm font-medium text-white/85 transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:w-0 after:rounded-full after:bg-lime after:transition-all hover:text-lime hover:after:w-full focus-visible:text-lime focus-visible:outline-none focus-visible:after:w-full";
+            return l.href.startsWith("/") ? (
+              <Link key={l.href} to="/stays" className={cls}>
+                {l.label}
+              </Link>
+            ) : (
+              <a key={l.href} href={l.href} className={cls}>
+                {l.label}
+              </a>
+            );
+          })}
         </nav>
+
 
         <div className="flex items-center justify-end gap-2">
           <div className="hidden sm:block">

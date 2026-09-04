@@ -12,7 +12,7 @@
 - [x] Fit the homepage hero within desktop and mobile viewports
 - [x] Polish destination, date, and guest filters with functional listing results
 - [x] Shorten the French hero headline
-- [ ] Refine landing page hierarchy and connect search to full discovery
-- [ ] Build bilingual all-listings route with responsive custom filters
-- [ ] Upgrade listing-detail gallery, content hierarchy, and booking UX
-- [ ] Verify complete desktop/mobile booking journey
+- [x] Refine landing page hierarchy and connect search to full discovery
+- [x] Build bilingual all-listings route with responsive custom filters
+- [x] Upgrade listing-detail gallery, content hierarchy, and booking UX
+- [x] Verify complete desktop/mobile booking journey
