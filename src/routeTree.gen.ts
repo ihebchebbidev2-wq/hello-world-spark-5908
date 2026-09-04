@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as TripsRouteImport } from './routes/trips'
 import { Route as StaysIndexRouteImport } from './routes/stays.index'
 import { Route as StaysPropertyIdRouteImport } from './routes/stays.$propertyId'
 
@@ -22,6 +23,11 @@ const IndexRoute = IndexRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TripsRoute = TripsRouteImport.update({
+  id: '/trips',
+  path: '/trips',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StaysIndexRoute = StaysIndexRouteImport.update({
@@ -38,12 +44,14 @@ const StaysPropertyIdRoute = StaysPropertyIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/trips': typeof TripsRoute
   '/stays/$propertyId': typeof StaysPropertyIdRoute
   '/stays/': typeof StaysIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/trips': typeof TripsRoute
   '/stays/$propertyId': typeof StaysPropertyIdRoute
   '/stays': typeof StaysIndexRoute
 }
@@ -51,20 +59,22 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/trips': typeof TripsRoute
   '/stays/$propertyId': typeof StaysPropertyIdRoute
   '/stays/': typeof StaysIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/stays/$propertyId' | '/stays/'
+  fullPaths: '/' | '/auth' | '/trips' | '/stays/$propertyId' | '/stays/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/stays/$propertyId' | '/stays'
-  id: '__root__' | '/' | '/auth' | '/stays/$propertyId' | '/stays/'
+  to: '/' | '/auth' | '/trips' | '/stays/$propertyId' | '/stays'
+  id: '__root__' | '/' | '/auth' | '/trips' | '/stays/$propertyId' | '/stays/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
+  TripsRoute: typeof TripsRoute
   StaysPropertyIdRoute: typeof StaysPropertyIdRoute
   StaysIndexRoute: typeof StaysIndexRoute
 }
@@ -83,6 +93,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trips': {
+      id: '/trips'
+      path: '/trips'
+      fullPath: '/trips'
+      preLoaderRoute: typeof TripsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/stays/': {
@@ -105,6 +122,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
+  TripsRoute: TripsRoute,
   StaysPropertyIdRoute: StaysPropertyIdRoute,
   StaysIndexRoute: StaysIndexRoute,
 }
