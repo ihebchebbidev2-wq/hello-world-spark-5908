@@ -4,7 +4,7 @@ import { AppShell } from "@/components/layout/AppShell";
 import { PropertyCard } from "@/components/home/PropertyCard";
 import { EmptyState } from "@/routes/trips";
 import { properties } from "@/data/properties";
-import { useFavourites } from "@/hooks/useFavourites";
+import { useFavorites } from "@/hooks/useFavorites";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
 export const Route = createFileRoute("/favourites")({
@@ -23,8 +23,8 @@ export const Route = createFileRoute("/favourites")({
 
 function FavouritesPage() {
   const { t } = useLanguage();
-  const { favourites } = useFavourites();
-  const saved = properties.filter((property) => favourites.includes(property.id));
+  const { favorites, isFavorite, toggle } = useFavorites();
+  const saved = properties.filter((property) => favorites.includes(property.id));
 
   return (
     <AppShell title={t.app.favourites.title} subtitle={t.app.favourites.subtitle}>
@@ -33,7 +33,12 @@ function FavouritesPage() {
       ) : (
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
           {saved.map((property) => (
-            <PropertyCard key={property.id} property={property} />
+            <PropertyCard
+              key={property.id}
+              property={property}
+              isFavorite={isFavorite(property.id)}
+              onToggleFavorite={(id) => toggle(id)}
+            />
           ))}
         </div>
       )}
