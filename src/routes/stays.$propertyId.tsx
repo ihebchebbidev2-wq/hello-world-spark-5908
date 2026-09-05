@@ -104,7 +104,20 @@ function ListingDetail() {
   }
 
   function reserve() {
-    toast.success(nights ? t.detail.reserved : t.detail.selectDates);
+    if (!nights || !range?.from || !range.to) {
+      toast.error(t.detail.selectDates);
+      return;
+    }
+    navigate({
+      to: "/checkout",
+      search: {
+        propertyId: property.id,
+        from: range.from.toISOString().slice(0, 10),
+        to: range.to.toISOString().slice(0, 10),
+        nights,
+        guests: adults + children,
+      },
+    });
   }
 
   return (

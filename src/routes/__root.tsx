@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LanguageProvider } from "@/i18n/LanguageProvider";
+import { CurrencyProvider } from "@/i18n/CurrencyProvider";
+import { CookieBanner } from "@/components/layout/CookieBanner";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -128,8 +130,11 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
-        <Outlet />
-        <Toaster />
+        <CurrencyProvider>
+          <Outlet />
+          <CookieBanner />
+          <Toaster />
+        </CurrencyProvider>
       </LanguageProvider>
     </QueryClientProvider>
   );

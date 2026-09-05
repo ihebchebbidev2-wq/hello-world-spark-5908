@@ -10,10 +10,15 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as FavouritesRouteImport } from './routes/favourites'
 import { Route as HostRouteImport } from './routes/host'
 import { Route as MessagesRouteImport } from './routes/messages'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TripsRouteImport } from './routes/trips'
 import { Route as StaysIndexRouteImport } from './routes/stays.index'
 import { Route as StaysPropertyIdRouteImport } from './routes/stays.$propertyId'
@@ -23,9 +28,19 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FavouritesRoute = FavouritesRouteImport.update({
@@ -41,6 +56,21 @@ const HostRoute = HostRouteImport.update({
 const MessagesRoute = MessagesRouteImport.update({
   id: '/messages',
   path: '/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TripsRoute = TripsRouteImport.update({
@@ -61,20 +91,30 @@ const StaysPropertyIdRoute = StaysPropertyIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
+  '/checkout': typeof CheckoutRoute
   '/favourites': typeof FavouritesRoute
   '/host': typeof HostRoute
   '/messages': typeof MessagesRoute
+  '/privacy': typeof PrivacyRoute
+  '/profile': typeof ProfileRoute
+  '/terms': typeof TermsRoute
   '/trips': typeof TripsRoute
   '/stays/$propertyId': typeof StaysPropertyIdRoute
   '/stays/': typeof StaysIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
+  '/checkout': typeof CheckoutRoute
   '/favourites': typeof FavouritesRoute
   '/host': typeof HostRoute
   '/messages': typeof MessagesRoute
+  '/privacy': typeof PrivacyRoute
+  '/profile': typeof ProfileRoute
+  '/terms': typeof TermsRoute
   '/trips': typeof TripsRoute
   '/stays/$propertyId': typeof StaysPropertyIdRoute
   '/stays': typeof StaysIndexRoute
@@ -82,10 +122,15 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/auth': typeof AuthRoute
+  '/checkout': typeof CheckoutRoute
   '/favourites': typeof FavouritesRoute
   '/host': typeof HostRoute
   '/messages': typeof MessagesRoute
+  '/privacy': typeof PrivacyRoute
+  '/profile': typeof ProfileRoute
+  '/terms': typeof TermsRoute
   '/trips': typeof TripsRoute
   '/stays/$propertyId': typeof StaysPropertyIdRoute
   '/stays/': typeof StaysIndexRoute
@@ -94,30 +139,45 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
     | '/auth'
+    | '/checkout'
     | '/favourites'
     | '/host'
     | '/messages'
+    | '/privacy'
+    | '/profile'
+    | '/terms'
     | '/trips'
     | '/stays/$propertyId'
     | '/stays/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin'
     | '/auth'
+    | '/checkout'
     | '/favourites'
     | '/host'
     | '/messages'
+    | '/privacy'
+    | '/profile'
+    | '/terms'
     | '/trips'
     | '/stays/$propertyId'
     | '/stays'
   id:
     | '__root__'
     | '/'
+    | '/admin'
     | '/auth'
+    | '/checkout'
     | '/favourites'
     | '/host'
     | '/messages'
+    | '/privacy'
+    | '/profile'
+    | '/terms'
     | '/trips'
     | '/stays/$propertyId'
     | '/stays/'
@@ -125,10 +185,15 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
   AuthRoute: typeof AuthRoute
+  CheckoutRoute: typeof CheckoutRoute
   FavouritesRoute: typeof FavouritesRoute
   HostRoute: typeof HostRoute
   MessagesRoute: typeof MessagesRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ProfileRoute: typeof ProfileRoute
+  TermsRoute: typeof TermsRoute
   TripsRoute: typeof TripsRoute
   StaysPropertyIdRoute: typeof StaysPropertyIdRoute
   StaysIndexRoute: typeof StaysIndexRoute
@@ -143,11 +208,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth': {
       id: '/auth'
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/favourites': {
@@ -169,6 +248,27 @@ declare module '@tanstack/react-router' {
       path: '/messages'
       fullPath: '/messages'
       preLoaderRoute: typeof MessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/trips': {
@@ -197,10 +297,15 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
   AuthRoute: AuthRoute,
+  CheckoutRoute: CheckoutRoute,
   FavouritesRoute: FavouritesRoute,
   HostRoute: HostRoute,
   MessagesRoute: MessagesRoute,
+  PrivacyRoute: PrivacyRoute,
+  ProfileRoute: ProfileRoute,
+  TermsRoute: TermsRoute,
   TripsRoute: TripsRoute,
   StaysPropertyIdRoute: StaysPropertyIdRoute,
   StaysIndexRoute: StaysIndexRoute,
