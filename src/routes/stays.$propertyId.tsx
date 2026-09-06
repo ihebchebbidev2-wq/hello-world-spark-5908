@@ -1,4 +1,4 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
 import { differenceInCalendarDays, format } from "date-fns";
 import { enUS, fr as frLocale } from "date-fns/locale";
 import {
@@ -60,6 +60,7 @@ function ListingDetail() {
   const { propertyId } = Route.useParams();
   const property = properties.find((item) => item.id === propertyId);
   const { t, locale } = useLanguage();
+  const navigate = useNavigate();
   const { isFavorite, toggle } = useFavorites();
   const [activeImage, setActiveImage] = useState(0);
   const [expanded, setExpanded] = useState(false);
@@ -111,7 +112,7 @@ function ListingDetail() {
     navigate({
       to: "/checkout",
       search: {
-        propertyId: property.id,
+        propertyId,
         from: range.from.toISOString().slice(0, 10),
         to: range.to.toISOString().slice(0, 10),
         nights,
