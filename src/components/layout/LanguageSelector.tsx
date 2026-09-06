@@ -1,5 +1,10 @@
 import { Check, ChevronDown } from "lucide-react";
 
+import flagDe from "@/assets/flag-de.jpg";
+import flagEn from "@/assets/flag-en.jpg";
+import flagEs from "@/assets/flag-es.jpg";
+import flagFr from "@/assets/flag-fr.jpg";
+import flagPt from "@/assets/flag-pt.jpg";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,7 +16,20 @@ import { useLanguage } from "@/i18n/LanguageProvider";
 import { locales, type Locale } from "@/i18n/translations";
 import { cn } from "@/lib/utils";
 
-const flags: Record<Locale, string> = { en: "🇬🇧", fr: "🇫🇷", es: "🇪🇸", de: "🇩🇪", pt: "🇵🇹" };
+const flags: Record<Locale, string> = { en: flagEn, fr: flagFr, es: flagEs, de: flagDe, pt: flagPt };
+
+function Flag({ code, label, className }: { code: Locale; label: string; className?: string }) {
+  return (
+    <img
+      src={flags[code]}
+      alt={label}
+      loading="lazy"
+      width={512}
+      height={512}
+      className={cn("rounded-full object-cover ring-1 ring-black/10", className)}
+    />
+  );
+}
 
 export function LanguageSelector({ variant = "light" }: { variant?: "light" | "dark" }) {
   const { locale, setLocale, t } = useLanguage();
