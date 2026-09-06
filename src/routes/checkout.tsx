@@ -14,15 +14,21 @@ import { setPlatform, usePlatform } from "@/hooks/usePlatform";
 import { useCurrency } from "@/i18n/CurrencyProvider";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
-type CheckoutSearch = { propertyId?: string; from?: string; to?: string; nights?: number; guests?: number };
+type CheckoutSearch = {
+  propertyId: string | undefined;
+  from: string | undefined;
+  to: string | undefined;
+  nights: number | undefined;
+  guests: number | undefined;
+};
 
 export const Route = createFileRoute("/checkout")({
   validateSearch: (search: Record<string, unknown>): CheckoutSearch => ({
-    propertyId: typeof search.propertyId === "string" ? search.propertyId : undefined,
-    from: typeof search.from === "string" ? search.from : undefined,
-    to: typeof search.to === "string" ? search.to : undefined,
-    nights: Number(search.nights) > 0 ? Number(search.nights) : undefined,
-    guests: Number(search.guests) > 0 ? Number(search.guests) : undefined,
+    propertyId: typeof search["propertyId"] === "string" ? search["propertyId"] : undefined,
+    from: typeof search["from"] === "string" ? search["from"] : undefined,
+    to: typeof search["to"] === "string" ? search["to"] : undefined,
+    nights: Number(search["nights"]) > 0 ? Number(search["nights"]) : undefined,
+    guests: Number(search["guests"]) > 0 ? Number(search["guests"]) : undefined,
   }),
   head: () => ({
     meta: [
