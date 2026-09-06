@@ -119,12 +119,12 @@
 }
 
 .dark {
-  --background: oklch(0.16 0.015 260);
-  --foreground: oklch(0.984 0.003 247.858);
-  --lime: oklch(0.88 0.19 120);
-  --lime-foreground: oklch(0.18 0.03 130);
-  --sky-panel: oklch(0.24 0.03 250);
-  --surface: oklch(0.21 0.02 260);
+  --background: oklch(0.19 0.025 208.4);
+  --foreground: oklch(0.977 0.01 87.5);
+  --lime: oklch(0.72 0.113 72.9);
+  --lime-foreground: oklch(0.18 0.03 80);
+  --sky-panel: oklch(0.26 0.03 208.4);
+  --surface: oklch(0.24 0.028 208.4);
   --card: oklch(0.208 0.042 265.755);
   --card-foreground: oklch(0.984 0.003 247.858);
   --popover: oklch(0.208 0.042 265.755);
