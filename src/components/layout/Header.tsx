@@ -97,7 +97,10 @@ export function Header() {
             ))}
           </nav>
           <div className="mt-3 flex items-center justify-between gap-3 border-t border-border pt-3">
-            <LanguageSelector />
+            <div className="flex items-center gap-2">
+              <CurrencySelector />
+              <LanguageSelector />
+            </div>
             <button
               type="button"
               onClick={() => {
