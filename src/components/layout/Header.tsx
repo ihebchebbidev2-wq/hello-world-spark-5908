@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { Link } from "@tanstack/react-router";
 
 
+import { CurrencySelector } from "@/components/layout/CurrencySelector";
 import { LanguageSelector } from "@/components/layout/LanguageSelector";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
@@ -46,7 +47,8 @@ export function Header() {
 
 
         <div className="flex items-center justify-end gap-2">
-          <div className="hidden sm:block">
+          <div className="hidden items-center gap-2 sm:flex">
+            <CurrencySelector variant="dark" />
             <LanguageSelector variant="dark" />
           </div>
           <button
