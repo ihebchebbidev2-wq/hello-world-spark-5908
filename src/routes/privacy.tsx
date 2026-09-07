@@ -6,10 +6,10 @@ import { useLanguage } from "@/i18n/LanguageProvider";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacy policy — Nestara" },
-      { name: "description", content: "How Nestara collects, uses and protects your personal data across bookings, hosting and payments." },
-      { property: "og:title", content: "Privacy policy — Nestara" },
-      { property: "og:description", content: "How Nestara collects, uses and protects your personal data." },
+      { title: "Privacy policy — RoomEasy" },
+      { name: "description", content: "How RoomEasy collects, uses and protects your personal data across bookings, hosting and payments." },
+      { property: "og:title", content: "Privacy policy — RoomEasy" },
+      { property: "og:description", content: "How RoomEasy collects, uses and protects your personal data." },
       { property: "og:type", content: "article" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -22,7 +22,7 @@ const sections = [
   ["How we use it", "To operate bookings, prevent fraud, provide support, remember your language and currency, and improve the service."],
   ["Sharing", "We share only what is necessary with hosts, guests and processors such as our payment and email providers."],
   ["Your rights", "You may access, correct, export or delete your data, and object to marketing at any time."],
-  ["Contact", "Write to privacy@nestara.travel and we will respond within 30 days."],
+  ["Contact", "Write to privacy@roomeasy.com and we will respond within 30 days."],
 ];
 
 function PrivacyPage() {

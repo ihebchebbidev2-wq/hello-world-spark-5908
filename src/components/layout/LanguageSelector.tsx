@@ -33,7 +33,9 @@ function Flag({ code, label, className }: { code: Locale; label: string; classNa
 
 export function LanguageSelector({ variant = "light" }: { variant?: "light" | "dark" }) {
   const { locale, setLocale, t } = useLanguage();
-  const active = locales.find((l) => l.code === locale)!;
+  const active = locales.find((l) => l.code === locale) ?? locales[0];
+
+  if (!active) return null;
 
   return (
     <DropdownMenu>
@@ -46,7 +48,7 @@ export function LanguageSelector({ variant = "light" }: { variant?: "light" | "d
             : "border-border bg-surface text-foreground hover:bg-secondary",
         )}
       >
-        <span aria-hidden className="text-base leading-none">{flags[active.code]}</span>
+        <Flag code={active.code} label="" className="size-5" />
         <span>{active.short}</span>
         <ChevronDown className="size-3.5 opacity-70" aria-hidden />
       </DropdownMenuTrigger>
@@ -58,7 +60,7 @@ export function LanguageSelector({ variant = "light" }: { variant?: "light" | "d
             onSelect={() => setLocale(l.code)}
             className="cursor-pointer gap-2.5"
           >
-            <span aria-hidden className="text-base leading-none">{flags[l.code]}</span>
+            <Flag code={l.code} label={l.label} className="size-6" />
             <span className="flex-1">{l.label}</span>
             {l.code === locale ? <Check className="size-4" aria-hidden /> : null}
           </DropdownMenuItem>

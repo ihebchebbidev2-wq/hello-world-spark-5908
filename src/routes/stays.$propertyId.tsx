@@ -20,7 +20,6 @@ import {
   Share2,
   Snowflake,
   Star,
-  Tent,
   Users,
   Wifi,
   type LucideIcon,
@@ -33,6 +32,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { LanguageSelector } from "@/components/layout/LanguageSelector";
+import { BrandLogo } from "@/components/layout/BrandLogo";
 import { cityName, properties } from "@/data/properties";
 import { interpolate, useLanguage } from "@/i18n/LanguageProvider";
 import { useFavorites } from "@/hooks/useFavorites";
@@ -41,12 +41,12 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/stays/$propertyId")({
   head: ({ params }) => {
     const property = properties.find((item) => item.id === params.propertyId);
-    const name = property?.name ?? "Nestara stay";
+    const name = property?.name ?? "RoomEasy stay";
     return {
       meta: [
-        { title: `${name} — Nestara` },
+        { title: `${name} — RoomEasy` },
         { name: "description", content: `Explore photos, amenities, reviews and availability for ${name}.` },
-        { property: "og:title", content: `${name} — Nestara` },
+        { property: "og:title", content: `${name} — RoomEasy` },
         { property: "og:description", content: `Explore photos, amenities, reviews and availability for ${name}.` },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
@@ -125,9 +125,8 @@ function ListingDetail() {
     <main className="min-h-screen bg-background pb-28 lg:pb-16">
       <header className="border-b border-border bg-surface">
         <div className="mx-auto grid h-16 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 sm:px-6 lg:h-20 lg:px-8">
-          <Link to="/" className="flex min-w-0 items-center gap-2 font-display font-semibold">
-            <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground"><Tent className="size-5" aria-hidden /></span>
-            <span className="truncate text-lg">{t.brand}</span>
+          <Link to="/" aria-label={t.brand} className="flex min-w-0 items-center">
+            <BrandLogo className="h-12 sm:h-14" />
           </Link>
           <LanguageSelector />
         </div>

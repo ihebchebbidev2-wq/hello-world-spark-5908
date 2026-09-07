@@ -81,11 +81,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Nestara — Handpicked stays" },
-      { name: "description", content: "Discover and reserve handpicked stays with Nestara." },
-      { name: "author", content: "Nestara" },
-      { property: "og:title", content: "Nestara — Handpicked stays" },
-      { property: "og:description", content: "Discover and reserve handpicked stays with Nestara." },
+      { title: "RoomEasy — Handpicked stays" },
+      { name: "description", content: "Discover and reserve handpicked stays with RoomEasy." },
+      { name: "author", content: "RoomEasy" },
+      { property: "og:title", content: "RoomEasy — Handpicked stays" },
+      { property: "og:description", content: "Discover and reserve handpicked stays with RoomEasy." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -94,13 +94,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=Space+Mono:wght@400;700&display=swap",
       },
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
   }),
 

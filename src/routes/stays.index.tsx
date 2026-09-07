@@ -11,7 +11,6 @@ import {
   Search,
   SlidersHorizontal,
   Star,
-  Tent,
   Users,
   X,
 } from "lucide-react";
@@ -21,6 +20,7 @@ import { toast } from "sonner";
 
 import { PropertyCard } from "@/components/home/PropertyCard";
 import { Footer } from "@/components/layout/Footer";
+import { BrandLogo } from "@/components/layout/BrandLogo";
 import { LanguageSelector } from "@/components/layout/LanguageSelector";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -82,9 +82,9 @@ export const Route = createFileRoute("/stays/")({
 
   head: () => ({
     meta: [
-      { title: "Browse Handpicked Stays — Nestara" },
-      { name: "description", content: "Explore and filter Nestara's handpicked resorts, lodges, apartments and boutique hotels." },
-      { property: "og:title", content: "Browse Handpicked Stays — Nestara" },
+      { title: "Browse Handpicked Stays — RoomEasy" },
+      { name: "description", content: "Explore and filter RoomEasy's handpicked resorts, lodges, apartments and boutique hotels." },
+      { property: "og:title", content: "Browse Handpicked Stays — RoomEasy" },
       { property: "og:description", content: "Find a memorable stay with flexible filters, transparent prices and verified guest ratings." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -137,9 +137,8 @@ function StaysPage() {
     <main className="min-h-screen bg-background">
       <header className="sticky top-0 z-40 border-b border-border bg-surface/95 backdrop-blur">
         <div className="mx-auto grid h-16 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 sm:h-20 sm:px-8">
-          <Link to="/" className="flex min-w-0 items-center gap-2 font-display font-bold">
-            <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground"><Tent className="size-5" /></span>
-            <span className="truncate text-xl">{t.brand}</span>
+          <Link to="/" aria-label={t.brand} className="flex min-w-0 items-center">
+            <BrandLogo className="h-12 sm:h-14" />
           </Link>
           <div className="flex items-center gap-2">
             <Button variant="ghost" asChild className="hidden sm:inline-flex"><Link to="/">{t.nav.home}</Link></Button>

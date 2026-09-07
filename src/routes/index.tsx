@@ -10,13 +10,13 @@ import { Footer } from "@/components/layout/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Nestara — Handpicked Resorts & Boutique Hotel Stays" },
+      { title: "RoomEasy — Handpicked Resorts & Boutique Hotel Stays" },
       {
         name: "description",
         content:
           "Book handpicked resorts, lodges and boutique hotels with transparent pricing, secure payments and hassle-free refunds. Available in English and French.",
       },
-      { property: "og:title", content: "Nestara — Handpicked Resorts & Boutique Hotel Stays" },
+      { property: "og:title", content: "RoomEasy — Handpicked Resorts & Boutique Hotel Stays" },
       {
         property: "og:description",
         content:

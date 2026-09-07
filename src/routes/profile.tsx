@@ -17,9 +17,9 @@ import { useLanguage } from "@/i18n/LanguageProvider";
 export const Route = createFileRoute("/profile")({
   head: () => ({
     meta: [
-      { title: "Your profile — Nestara" },
-      { name: "description", content: "Update your Nestara name, contact details, language, currency and security preferences." },
-      { property: "og:title", content: "Your profile — Nestara" },
+      { title: "Your profile — RoomEasy" },
+      { name: "description", content: "Update your RoomEasy name, contact details, language, currency and security preferences." },
+      { property: "og:title", content: "Your profile — RoomEasy" },
       { property: "og:description", content: "Name, contact details, language, currency and security preferences." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

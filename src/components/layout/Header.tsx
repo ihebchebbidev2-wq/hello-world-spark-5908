@@ -1,10 +1,11 @@
-import { Menu, Tent, UserRound, X } from "lucide-react";
+import { Menu, UserRound, X } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Link } from "@tanstack/react-router";
 
 
 import { CurrencySelector } from "@/components/layout/CurrencySelector";
+import { BrandLogo } from "@/components/layout/BrandLogo";
 import { LanguageSelector } from "@/components/layout/LanguageSelector";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
@@ -22,11 +23,8 @@ export function Header() {
   return (
     <header className="absolute inset-x-0 top-0 z-30">
       <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-5 sm:px-8 lg:grid-cols-[1fr_auto_1fr]">
-        <a href="#top" className="flex min-w-0 items-center gap-2 text-white">
-          <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-lime text-lime-foreground">
-            <Tent className="size-5" aria-hidden />
-          </span>
-          <span className="truncate font-display text-xl font-bold">{t.brand}</span>
+        <a href="#top" aria-label={t.brand} className="flex min-w-0 items-center">
+          <BrandLogo inverted className="h-14 sm:h-16" />
         </a>
 
         <nav className="hidden justify-center gap-8 lg:flex">

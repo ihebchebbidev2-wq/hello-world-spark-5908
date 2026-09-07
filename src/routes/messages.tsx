@@ -14,10 +14,10 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/messages")({
   head: () => ({
     meta: [
-      { title: "Messages — Nestara" },
-      { name: "description", content: "Threaded conversations between Nestara guests and hosts, with unread indicators." },
-      { property: "og:title", content: "Messages — Nestara" },
-      { property: "og:description", content: "Threaded conversations between Nestara guests and hosts." },
+      { title: "Messages — RoomEasy" },
+      { name: "description", content: "Threaded conversations between RoomEasy guests and hosts, with unread indicators." },
+      { property: "og:title", content: "Messages — RoomEasy" },
+      { property: "og:description", content: "Threaded conversations between RoomEasy guests and hosts." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
