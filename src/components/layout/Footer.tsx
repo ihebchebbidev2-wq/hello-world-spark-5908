@@ -1,5 +1,6 @@
-import { ArrowUpRight, Facebook, Instagram, Linkedin, Tent, Twitter } from "lucide-react";
+import { ArrowUpRight, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
+import { BrandLogo } from "@/components/layout/BrandLogo";
 import { LanguageSelector } from "@/components/layout/LanguageSelector";
 import { useLanguage } from "@/i18n/LanguageProvider";
 
@@ -35,12 +36,7 @@ export function Footer() {
 
         <div className="relative grid gap-12 lg:grid-cols-[1.3fr_repeat(3,0.7fr)]">
           <div className="min-w-0">
-            <div className="flex items-center gap-2">
-              <span className="grid size-9 place-items-center rounded-xl bg-lime text-lime-foreground">
-                <Tent className="size-5" aria-hidden />
-              </span>
-              <span className="font-display text-xl font-bold">{t.brand}</span>
-            </div>
+            <BrandLogo inverted className="h-20" />
             <p className="mt-4 max-w-xs text-sm text-navy-muted">{t.footer.tagline}</p>
 
             <p className="mt-8 text-xs font-semibold tracking-[0.2em] text-navy-muted uppercase">

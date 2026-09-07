@@ -12,8 +12,8 @@ export function BrandLogo({
     <img
       src={logo}
       alt="RoomEasy"
-      width={1200}
-      height={690}
+      width={1182}
+      height={800}
       className={cn(
         "h-12 w-auto object-contain object-left",
         inverted && "brightness-0 invert",

@@ -1,9 +1,10 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { LayoutDashboard, LogOut, MessageSquare, Shield, Tent, UserRound } from "lucide-react";
+import { LayoutDashboard, LogOut, MessageSquare, Shield, UserRound, type LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { toast } from "sonner";
 
 import { CurrencySelector } from "@/components/layout/CurrencySelector";
+import { BrandLogo } from "@/components/layout/BrandLogo";
 import { LanguageSelector } from "@/components/layout/LanguageSelector";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,7 +19,7 @@ import { useLanguage } from "@/i18n/LanguageProvider";
 import { setPlatform, usePlatform } from "@/hooks/usePlatform";
 import { cn } from "@/lib/utils";
 
-type NavItem = { to: string; label: string; icon?: typeof Tent };
+type NavItem = { to: string; label: string; icon?: LucideIcon };
 
 export function AppShell({
   children,
@@ -49,11 +50,8 @@ export function AppShell({
       <header className="sticky top-0 z-40 border-b border-border bg-surface/95 backdrop-blur">
         <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 sm:px-6 lg:px-8">
           <div className="flex min-w-0 items-center gap-6">
-            <Link to="/" className="flex min-w-0 items-center gap-2">
-              <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-lime text-lime-foreground">
-                <Tent className="size-5" aria-hidden />
-              </span>
-              <span className="truncate font-display text-lg font-bold">{t.brand}</span>
+            <Link to="/" aria-label={t.brand} className="flex min-w-0 items-center">
+              <BrandLogo className="h-12" />
             </Link>
             <nav className="hidden items-center gap-5 lg:flex">
               {nav.map((item) => (

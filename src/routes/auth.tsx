@@ -1,9 +1,9 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { Tent } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
+import { BrandLogo } from "@/components/layout/BrandLogo";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -45,12 +45,7 @@ function AuthPage() {
   return (
     <main className="grid min-h-screen bg-background lg:grid-cols-2">
       <section className="relative hidden flex-col justify-between bg-foreground p-12 text-background lg:flex">
-        <div className="flex items-center gap-2">
-          <span className="grid size-9 place-items-center rounded-xl bg-lime text-lime-foreground">
-            <Tent className="size-5" aria-hidden />
-          </span>
-          <span className="font-display text-xl font-bold">{t.brand}</span>
-        </div>
+        <BrandLogo inverted className="h-24" />
         <div>
           <h2 className="font-display text-4xl leading-tight font-bold">{t.hero.titleLine1}<br />{t.hero.titleLine2}</h2>
           <p className="mt-4 max-w-sm text-sm text-background/70">{t.app.auth.createIntro}</p>
