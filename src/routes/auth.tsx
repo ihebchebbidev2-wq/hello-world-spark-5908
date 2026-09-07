@@ -15,10 +15,10 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Sign in or create an account — Nestara" },
-      { name: "description", content: "Access your Nestara trips, messages and host dashboard with one account." },
-      { property: "og:title", content: "Sign in or create an account — Nestara" },
-      { property: "og:description", content: "One Nestara account to book stays and to publish your own place." },
+      { title: "Sign in or create an account — RoomEasy" },
+      { name: "description", content: "Access your RoomEasy trips, messages and host dashboard with one account." },
+      { property: "og:title", content: "Sign in or create an account — RoomEasy" },
+      { property: "og:description", content: "One RoomEasy account to book stays and to publish your own place." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -36,7 +36,7 @@ function AuthPage() {
 
   function signIn(displayName: string, created: boolean) {
     setPlatform({
-      session: { name: displayName || email.split("@")[0] || "Traveller", email: email || "guest@nestara.travel", role, verified: !created },
+      session: { name: displayName || email.split("@")[0] || "Traveller", email: email || "guest@roomeasy.com", role, verified: !created },
     });
     toast.success(created ? t.app.auth.created : interpolate(t.app.auth.signedIn, { name: displayName || email }));
     void navigate({ to: role === "host" ? "/host" : "/trips" });

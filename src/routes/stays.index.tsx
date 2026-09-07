@@ -82,9 +82,9 @@ export const Route = createFileRoute("/stays/")({
 
   head: () => ({
     meta: [
-      { title: "Browse Handpicked Stays — Nestara" },
-      { name: "description", content: "Explore and filter Nestara's handpicked resorts, lodges, apartments and boutique hotels." },
-      { property: "og:title", content: "Browse Handpicked Stays — Nestara" },
+      { title: "Browse Handpicked Stays — RoomEasy" },
+      { name: "description", content: "Explore and filter RoomEasy's handpicked resorts, lodges, apartments and boutique hotels." },
+      { property: "og:title", content: "Browse Handpicked Stays — RoomEasy" },
       { property: "og:description", content: "Find a memorable stay with flexible filters, transparent prices and verified guest ratings." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

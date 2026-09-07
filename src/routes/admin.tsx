@@ -18,9 +18,9 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/admin")({
   head: () => ({
     meta: [
-      { title: "Admin back office — Nestara" },
-      { name: "description", content: "Moderate listings, manage Nestara members, review payouts and tune platform settings." },
-      { property: "og:title", content: "Admin back office — Nestara" },
+      { title: "Admin back office — RoomEasy" },
+      { name: "description", content: "Moderate listings, manage RoomEasy members, review payouts and tune platform settings." },
+      { property: "og:title", content: "Admin back office — RoomEasy" },
       { property: "og:description", content: "Moderate listings, manage members, review payouts and platform settings." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

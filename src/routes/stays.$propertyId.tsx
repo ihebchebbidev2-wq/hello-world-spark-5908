@@ -41,12 +41,12 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/stays/$propertyId")({
   head: ({ params }) => {
     const property = properties.find((item) => item.id === params.propertyId);
-    const name = property?.name ?? "Nestara stay";
+    const name = property?.name ?? "RoomEasy stay";
     return {
       meta: [
-        { title: `${name} — Nestara` },
+        { title: `${name} — RoomEasy` },
         { name: "description", content: `Explore photos, amenities, reviews and availability for ${name}.` },
-        { property: "og:title", content: `${name} — Nestara` },
+        { property: "og:title", content: `${name} — RoomEasy` },
         { property: "og:description", content: `Explore photos, amenities, reviews and availability for ${name}.` },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },

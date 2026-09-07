@@ -32,9 +32,9 @@ export const Route = createFileRoute("/checkout")({
   }),
   head: () => ({
     meta: [
-      { title: "Confirm and pay — Nestara" },
-      { name: "description", content: "Review your Nestara stay, price breakdown and cancellation policy, then confirm your booking." },
-      { property: "og:title", content: "Confirm and pay — Nestara" },
+      { title: "Confirm and pay — RoomEasy" },
+      { name: "description", content: "Review your RoomEasy stay, price breakdown and cancellation policy, then confirm your booking." },
+      { property: "og:title", content: "Confirm and pay — RoomEasy" },
       { property: "og:description", content: "Review your stay, price breakdown and cancellation policy." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

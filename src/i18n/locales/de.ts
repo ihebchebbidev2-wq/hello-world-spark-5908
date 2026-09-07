@@ -1,7 +1,7 @@
 import type { DeepPartial, Dictionary } from "../translations";
 
 export const de: DeepPartial<Dictionary> = {
-  brand: "Nestara",
+  brand: "RoomEasy",
   nav: { home: "Startseite", stays: "Unterkünfte", experiences: "Erlebnisse", journal: "Journal" },
   auth: { login: "Anmelden", account: "Konto", connect: "Verbinden" },
   language: { label: "Sprache", change: "Sprache ändern" },
@@ -65,7 +65,7 @@ export const de: DeepPartial<Dictionary> = {
     air: "Klimaanlage",
     security: "24-Stunden-Sicherheitsdienst",
     hostedBy: "Gastgeberin: Maya",
-    superhost: "Von Nestara verifizierter Gastgeber",
+    superhost: "Von RoomEasy verifizierter Gastgeber",
     hostNote: "Antwortet in der Regel innerhalb einer Stunde",
     stayDates: "Ihr Aufenthalt",
     checkIn: "Check-in",
@@ -127,7 +127,7 @@ export const de: DeepPartial<Dictionary> = {
     resetFilters: "Filter zurücksetzen",
   },
   values: {
-    title: "Was Nestara auszeichnet",
+    title: "Was RoomEasy auszeichnet",
     subtitle:
       "Wir glauben, dass jeder Aufenthalt die Grundlage für eine unvergessliche Reise ist — Komfort, Verbindung und ein Ort, an dem man wirklich dazugehört.",
     rating: "4,8 Durchschnittsbewertung",
@@ -162,13 +162,13 @@ export const de: DeepPartial<Dictionary> = {
   },
   testimonials: {
     title: "Was unsere Gäste sagen",
-    subtitle: "Erfahren Sie, warum Reisende sich für Nestara und unvergessliche Aufenthalte entscheiden.",
+    subtitle: "Erfahren Sie, warum Reisende sich für RoomEasy und unvergessliche Aufenthalte entscheiden.",
     previous: "Vorheriges Testimonial",
     next: "Nächstes Testimonial",
     items: [
       {
         quote:
-          "Ich hatte ein fantastisches Erlebnis bei der Buchung über Nestara! Ich habe das perfekte Hotel für meine Reise gefunden. Der Prozess war reibungslos, und ich habe die Vielfalt der Optionen geliebt. Sehr zu empfehlen!",
+          "Ich hatte ein fantastisches Erlebnis bei der Buchung über RoomEasy! Ich habe das perfekte Hotel für meine Reise gefunden. Der Prozess war reibungslos, und ich habe die Vielfalt der Optionen geliebt. Sehr zu empfehlen!",
         name: "Rakib Kowshar",
         location: "Zürich, Schweiz",
         stay: "Moonlit Grove Lodge",
@@ -220,7 +220,7 @@ export const de: DeepPartial<Dictionary> = {
     rights: "Alle Rechte vorbehalten.",
     followUs: "Folgen Sie uns",
     contactTitle: "Sprechen Sie mit uns",
-    email: "hello@nestara.travel",
+    email: "hello@roomeasy.com",
     privacy: "Datenschutz",
     terms: "AGB",
   },
@@ -231,9 +231,9 @@ export const de: DeepPartial<Dictionary> = {
       signIn: "Anmelden", signUp: "Konto erstellen", email: "E-Mail-Adresse", password: "Passwort", name: "Vollständiger Name",
       forgot: "Passwort vergessen?", resetSent: "Link zum Zurücksetzen des Passworts gesendet", welcome: "Willkommen zurück",
       intro: "Melden Sie sich an, um Ihre Reisen, Nachrichten und Unterkünfte zu verwalten.", createIntro: "Ein Konto, um zu reisen und zu vermieten.",
-      haveAccount: "Haben Sie bereits ein Konto?", noAccount: "Neu bei Nestara?", iAm: "Ich möchte", asGuest: "Unterkünfte buchen",
+      haveAccount: "Haben Sie bereits ein Konto?", noAccount: "Neu bei RoomEasy?", iAm: "Ich möchte", asGuest: "Unterkünfte buchen",
       asHost: "Eine Unterkunft veröffentlichen", signedIn: "Angemeldet als {name}", signedOut: "Sie sind abgemeldet",
-      created: "Konto erstellt — willkommen bei Nestara", verifyEmail: "Bestätigen Sie Ihre E-Mail, um Auszahlungen freizuschalten", verified: "E-Mail bestätigt",
+      created: "Konto erstellt — willkommen bei RoomEasy", verifyEmail: "Bestätigen Sie Ihre E-Mail, um Auszahlungen freizuschalten", verified: "E-Mail bestätigt",
       demoNote: "Demo-Erlebnis — es werden keine echten Zugangsdaten gespeichert.",
     },
     profile: {

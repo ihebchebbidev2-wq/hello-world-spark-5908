@@ -16,10 +16,10 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/trips")({
   head: () => ({
     meta: [
-      { title: "My trips — Nestara" },
-      { name: "description", content: "Track every Nestara stay you have requested, confirmed or completed." },
-      { property: "og:title", content: "My trips — Nestara" },
-      { property: "og:description", content: "Track every Nestara stay you have requested, confirmed or completed." },
+      { title: "My trips — RoomEasy" },
+      { name: "description", content: "Track every RoomEasy stay you have requested, confirmed or completed." },
+      { property: "og:title", content: "My trips — RoomEasy" },
+      { property: "og:description", content: "Track every RoomEasy stay you have requested, confirmed or completed." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

@@ -14,7 +14,7 @@ export const locales: { code: Locale; label: string; short: string }[] = [
 
 export const translations = {
   en: {
-    brand: "Nestara",
+    brand: "RoomEasy",
     nav: { home: "Home", stays: "Stays", experiences: "Experiences", journal: "Journal" },
     auth: { login: "Log in", account: "Account", connect: "Connect" },
     language: { label: "Language", change: "Change language" },
@@ -78,7 +78,7 @@ export const translations = {
       air: "Air conditioning",
       security: "24-hour security",
       hostedBy: "Hosted by Maya",
-      superhost: "Nestara verified host",
+      superhost: "RoomEasy verified host",
       hostNote: "Usually responds within an hour",
       stayDates: "Your stay",
       checkIn: "Check-in",
@@ -140,7 +140,7 @@ export const translations = {
       resetFilters: "Reset filters",
     },
     values: {
-      title: "What Makes Nestara Different",
+      title: "What Makes RoomEasy Different",
       subtitle:
         "We believe every stay is the foundation of a memorable journey — comfort, connection and a place to truly belong.",
       rating: "4.8 avg rating",
@@ -175,13 +175,13 @@ export const translations = {
     },
     testimonials: {
       title: "What Our Guests Say",
-      subtitle: "See why travellers choose Nestara for unforgettable stays.",
+      subtitle: "See why travellers choose RoomEasy for unforgettable stays.",
       previous: "Previous testimonial",
       next: "Next testimonial",
       items: [
         {
           quote:
-            "Had an amazing experience booking through Nestara! I found the perfect hotel for my trip. The process was smooth, and I loved the variety of options. Highly recommend!",
+            "Had an amazing experience booking through RoomEasy! I found the perfect hotel for my trip. The process was smooth, and I loved the variety of options. Highly recommend!",
           name: "Rakib Kowshar",
           location: "Zurich, Switzerland",
           stay: "Moonlit Grove Lodge",
@@ -233,7 +233,7 @@ export const translations = {
       rights: "All rights reserved.",
       followUs: "Follow us",
       contactTitle: "Talk to us",
-      email: "hello@nestara.travel",
+      email: "hello@roomeasy.com",
       privacy: "Privacy",
       terms: "Terms",
     },
@@ -244,9 +244,9 @@ export const translations = {
         signIn: "Sign in", signUp: "Create account", email: "Email address", password: "Password", name: "Full name",
         forgot: "Forgot your password?", resetSent: "Password reset link sent", welcome: "Welcome back",
         intro: "Sign in to manage your trips, messages and listings.", createIntro: "One account to travel and to host.",
-        haveAccount: "Already have an account?", noAccount: "New to Nestara?", iAm: "I want to", asGuest: "Book stays",
+        haveAccount: "Already have an account?", noAccount: "New to RoomEasy?", iAm: "I want to", asGuest: "Book stays",
         asHost: "Publish a place", signedIn: "Signed in as {name}", signedOut: "You are signed out",
-        created: "Account created — welcome to Nestara", verifyEmail: "Verify your email to unlock payouts", verified: "Email verified",
+        created: "Account created — welcome to RoomEasy", verifyEmail: "Verify your email to unlock payouts", verified: "Email verified",
         demoNote: "Demo experience — no real credentials are stored.",
       },
       profile: {
@@ -313,7 +313,7 @@ export const translations = {
     },
   },
   fr: {
-    brand: "Nestara",
+    brand: "RoomEasy",
     nav: { home: "Accueil", stays: "Séjours", experiences: "Expériences", journal: "Journal" },
     auth: { login: "Connexion", account: "Compte", connect: "Se connecter" },
     language: { label: "Langue", change: "Changer de langue" },
@@ -378,7 +378,7 @@ export const translations = {
       air: "Climatisation",
       security: "Sécurité 24 h/24",
       hostedBy: "Hébergé par Maya",
-      superhost: "Hôte vérifiée par Nestara",
+      superhost: "Hôte vérifiée par RoomEasy",
       hostNote: "Répond généralement sous une heure",
       stayDates: "Votre séjour",
       checkIn: "Arrivée",
@@ -440,7 +440,7 @@ export const translations = {
       resetFilters: "Réinitialiser",
     },
     values: {
-      title: "Ce qui rend Nestara unique",
+      title: "Ce qui rend RoomEasy unique",
       subtitle:
         "Chaque séjour est le socle d'un voyage mémorable : confort, rencontres et un lieu où l'on se sent chez soi.",
       rating: "4,8 note moyenne",
@@ -475,13 +475,13 @@ export const translations = {
     },
     testimonials: {
       title: "Ce que disent nos voyageurs",
-      subtitle: "Découvrez pourquoi les voyageurs choisissent Nestara.",
+      subtitle: "Découvrez pourquoi les voyageurs choisissent RoomEasy.",
       previous: "Témoignage précédent",
       next: "Témoignage suivant",
       items: [
         {
           quote:
-            "Expérience formidable avec Nestara ! J'ai trouvé l'hôtel parfait pour mon voyage. Réservation fluide et un vrai choix d'options. Je recommande vivement !",
+            "Expérience formidable avec RoomEasy ! J'ai trouvé l'hôtel parfait pour mon voyage. Réservation fluide et un vrai choix d'options. Je recommande vivement !",
           name: "Rakib Kowshar",
           location: "Zurich, Suisse",
           stay: "Moonlit Grove Lodge",
@@ -533,7 +533,7 @@ export const translations = {
       rights: "Tous droits réservés.",
       followUs: "Suivez-nous",
       contactTitle: "Écrivez-nous",
-      email: "hello@nestara.travel",
+      email: "hello@roomeasy.com",
       privacy: "Confidentialité",
       terms: "Conditions",
     },
@@ -544,9 +544,9 @@ export const translations = {
         signIn: "Se connecter", signUp: "Créer un compte", email: "Adresse e-mail", password: "Mot de passe", name: "Nom complet",
         forgot: "Mot de passe oublié ?", resetSent: "Lien de réinitialisation envoyé", welcome: "Bon retour",
         intro: "Connectez-vous pour gérer vos voyages, messages et annonces.", createIntro: "Un seul compte pour voyager et héberger.",
-        haveAccount: "Vous avez déjà un compte ?", noAccount: "Nouveau sur Nestara ?", iAm: "Je souhaite", asGuest: "Réserver des séjours",
+        haveAccount: "Vous avez déjà un compte ?", noAccount: "Nouveau sur RoomEasy ?", iAm: "Je souhaite", asGuest: "Réserver des séjours",
         asHost: "Publier un logement", signedIn: "Connecté en tant que {name}", signedOut: "Vous êtes déconnecté",
-        created: "Compte créé — bienvenue sur Nestara", verifyEmail: "Vérifiez votre e-mail pour activer les versements", verified: "E-mail vérifié",
+        created: "Compte créé — bienvenue sur RoomEasy", verifyEmail: "Vérifiez votre e-mail pour activer les versements", verified: "E-mail vérifié",
         demoNote: "Démonstration — aucune donnée réelle n’est enregistrée.",
       },
       profile: {

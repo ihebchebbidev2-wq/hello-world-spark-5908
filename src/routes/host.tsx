@@ -21,9 +21,9 @@ import { cn } from "@/lib/utils";
 export const Route = createFileRoute("/host")({
   head: () => ({
     meta: [
-      { title: "Host dashboard — Nestara" },
-      { name: "description", content: "Manage Nestara listings, availability, rates, booking requests and payouts in one dashboard." },
-      { property: "og:title", content: "Host dashboard — Nestara" },
+      { title: "Host dashboard — RoomEasy" },
+      { name: "description", content: "Manage RoomEasy listings, availability, rates, booking requests and payouts in one dashboard." },
+      { property: "og:title", content: "Host dashboard — RoomEasy" },
       { property: "og:description", content: "Manage listings, availability, rates, requests and payouts." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

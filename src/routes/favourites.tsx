@@ -10,10 +10,10 @@ import { useLanguage } from "@/i18n/LanguageProvider";
 export const Route = createFileRoute("/favourites")({
   head: () => ({
     meta: [
-      { title: "Saved stays — Nestara" },
-      { name: "description", content: "Every Nestara stay you saved, ready to compare and book." },
-      { property: "og:title", content: "Saved stays — Nestara" },
-      { property: "og:description", content: "Every Nestara stay you saved, ready to compare and book." },
+      { title: "Saved stays — RoomEasy" },
+      { name: "description", content: "Every RoomEasy stay you saved, ready to compare and book." },
+      { property: "og:title", content: "Saved stays — RoomEasy" },
+      { property: "og:description", content: "Every RoomEasy stay you saved, ready to compare and book." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
